@@ -1,0 +1,28 @@
+#stripe-payment-data p {
+  font-size: 0.75rem;
+  margin-top: 2rem;
+}
+
+.wc-credit-card-form {
+  margin-top: 1rem;
+}
+
+.wc-stripe-error {
+  color: #fc575e;
+  font-weight: bold;
+  font-size: 0.75rem;
+}
+
+.wc-stripe-elements-field,
+.wc-stripe-iban-element-field {
+  border: 1px solid #ddd;
+  margin: 5px 0;
+  padding: 10px;
+  background-color: #fafafa;
+  outline: 0;
+}
+
+li.wc_payment_method.payment_method_stripe label i {
+  margin-right: 0.5rem;
+  font-size: 1.4em;
+}

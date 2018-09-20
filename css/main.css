@@ -1,0 +1,260 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.95rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-transform: capitalize;
+  font-family: "brandon-grotesque", sans-serif;
+}
+
+.title {
+  color: #363636;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 2.125;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.is-info {
+  background-color: #00d1b2
+}
+
+abbr.required {
+  color: #fc575e;
+}
+
+a {
+  color: #00917c;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+small {
+  font-size: 0.675em;
+}
+
+.menu {
+  font-size: 0.95rem;
+}
+
+.menu-main-menu-container {
+  display: flex;
+}
+
+.button.is-primary {
+  background-color: #00d1b2;
+  border-color: transparent;
+  color: #fff;
+}
+
+/*Gap Helpers*/
+
+.mtl {
+  margin-top: 1rem;
+  clear: both;
+  /* Where Footer Collapses on Single Product? */
+}
+
+.mtlb {
+  margin-bottom: 1rem;
+
+}
+
+/*Nav Bar*/
+
+#menu-main-menu li {
+  margin-right: 1rem;
+}
+
+/*.is-bg-fill {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}*/
+
+.custom-logo {
+  width: 6rem;
+}
+
+a.custom-logo-link {
+  display: flex;
+}
+
+.is-bg-fill-header {
+  background: url("/wp-content/themes/evakos/img/rocket-hero-light.svg") no-repeat 40% 75%;
+  background: linear-gradient(90deg,
+    rgba(12, 5, 120, 1) 0%,
+    rgba(8, 8, 148, 1) 35%,
+    rgba(0, 212, 255, 1) 100%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 98%, 0 50%);
+  clip-path: polygon(0 0, 100% 0, 100% 98%, 0 50%);
+}
+
+.is-bg-fill {
+  background: linear-gradient(45deg,
+    rgba(12, 5, 120, 1) 0%,
+    rgba(8, 8, 148, 1) 35%,
+    rgba(0, 212, 255, 1) 100%);
+}
+
+.is-bg-fill-reverse {
+  background: rgba(255, 255, 255, 1);
+  background: -moz-linear-gradient(-45deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(246, 246, 246, 1) 47%,
+    rgba(237, 237, 237, 1) 100%);
+  background: -webkit-gradient(left top,
+    right bottom,
+    color-stop(0%, rgba(255, 255, 255, 1)),
+    color-stop(47%, rgba(246, 246, 246, 1)),
+    color-stop(100%, rgba(237, 237, 237, 1)));
+  background: -webkit-linear-gradient(-45deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(246, 246, 246, 1) 47%,
+    rgba(237, 237, 237, 1) 100%);
+  background: -o-linear-gradient(-45deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(246, 246, 246, 1) 47%,
+    rgba(237, 237, 237, 1) 100%);
+  background: -ms-linear-gradient(-45deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(246, 246, 246, 1) 47%,
+    rgba(237, 237, 237, 1) 100%);
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(246, 246, 246, 1) 47%,
+    rgba(237, 237, 237, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed', GradientType=1);
+  -webkit-clip-path: polygon(0 32%, 100% 0%, 100% 100%, 0 100%);
+  clip-path: polygon(0 32%, 100% 0%, 100% 100%, 0 100%);
+}
+
+.is-sec-fill {
+  background-color: #00917c;
+}
+
+
+.has-min-height {
+  min-height: 90vh;
+}
+
+.has-vertical-offset {
+  margin-top: -20rem;
+}
+
+.has-small-vertical-offset {
+  margin-top: -5rem;
+}
+
+.has-x-small-vertical-offset {
+  margin-top: -2rem;
+}
+
+.has-large-margin-top {
+  margin-top: 7rem;
+}
+
+.has-medium-margin-top {
+  margin-top: 5rem;
+}
+
+.has-small-margin-top {
+  margin-top: 2rem;
+}
+
+.has-x-small-margin-top {
+  margin-top: 1rem;
+}
+
+li.price-header {
+  font-size: 200%;
+}
+
+.has-grad {
+  color: #09dbcd;
+}
+
+.has-color-blue {
+  color: #026fce;
+}
+
+.has-border-right {
+  border-right: 1px solid #cdcdcd;
+}
+
+.modal-background {
+  color: #09dbcd;
+}
+
+.pricing-table .pricing-plan .plan-header {
+  background-color: transparent;
+  color: whitesmoke;
+}
+
+.devices img {
+  max-width: 90%;
+}
+
+.navbar-link::after {
+  border-color: white;
+}
+
+/* Services Block */
+
+.services .fa,
+.services .fas {
+  font-size: 150%;
+}
+
+table.variations tbody tr.attribute-pa_package td.value {
+  display: flex;
+}
+
+table.variations tbody tr.attribute-pa_package td.value {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+table.variations tbody tr.attribute-pa_package td.value div {
+  margin-right: 1rem;
+}
+
+/* form.variations_form {
+  background-color: #fafafa;
+  padding: 1.5rem;
+} */
+
+.quantity {
+  margin-top: 1rem;
+}
+
+.woocommerce-variation-price {
+  font-size: 150%;
+  font-weight: bolder;
+}
+
+a.reset_variations i {
+  color: #00d1b2;
+}
+
+button.single_add_to_cart_button.button.alt {
+  width: 100%;
+}
+
+form.variations_form td.label {
+  color: black;
+  display: block;
+  font-size: 1rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+}

@@ -24,7 +24,7 @@ wc_print_notices();
 
 ?>
 
-<div class="container">
+<div class="container is-fluid is-marginless">
   <div class="columns">
   <div class="column is-one-fifth">
 	  

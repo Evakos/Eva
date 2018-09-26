@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <section class="hero">
                     <div class="hero-body is-sec-fill mtlb">
-                        <div class="container">
+                    <div class="container">
                             <h1 class="title">
                             <?php
 	/* translators: 1: user display name 2: logout url */
@@ -55,12 +55,8 @@ if ( ! defined( 'ABSPATH' ) ) {
                             <article class="tile is-child box">
                                 <p class="title">
 
-									<?php 
-
-  echo wc_get_customer_order_count ($user_id)
-
-  ?>
-
+                                 <?php // Display "completed" orders count
+echo evakos_get_orders_count_from_status( "completed" ); ?>
 								 
 								</p>
                                 <p class="subtitle">Products</p>
@@ -68,7 +64,11 @@ if ( ! defined( 'ABSPATH' ) ) {
                         </div>
                         <div class="tile is-parent">
                             <article class="tile is-child box">
-                                <p class="title">3.4k</p>
+                                <p class="title">
+                                
+                                <?php // Display "processing" orders count
+echo evakos_get_orders_count_from_status( "processing" ); ?>
+
                                 <p class="subtitle">Open Orders</p>
                             </article>
                         </div>

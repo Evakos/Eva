@@ -50,7 +50,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
     <div class="evakos-prod-meta-box">
 
 
-	<div class="tabs is-boxed is-centered main-menu" id="nav">
+	<div class="tabs is-boxed is-centered main-menu" id="eks-nav-tab">
                 <ul>
                     <li data-target="pane-1" id="1" class="is-active">
                         <a>
@@ -74,9 +74,9 @@ if ( empty( $product ) || ! $product->is_visible() ) {
             </div>
 
 
-            <div class="tab-content">
+            <div class="eks-tab-content">
 
-                <div class="tab-pane" id="pane-1">
+                <div class="eks-tab-pane" id="pane-1">
 <?php
                 /**
 	 * Hook: woocommerce_shop_loop_item_title.
@@ -93,15 +93,15 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 
                 </div>
 
-                <div class="tab-pane" id="pane-2">
+                <div class="eks-tab-pane" id="pane-2">
                 <h1>Two</h1>
                 </div>
 
-                <div class="tab-pane" id="pane-3">
+                <div class="eks-tab-pane" id="pane-3">
                 <h1>Three</h1>
                 </div>
 
-                <div class="tab-pane" id="pane-4">
+                <div class="eks-tab-pane" id="pane-4">
                 <h1>Four</h1>
                 </div>
 </li>

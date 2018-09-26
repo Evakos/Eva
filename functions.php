@@ -16,6 +16,8 @@ add_action( 'after_setup_theme', 'evakos_add_woocommerce_support' );
 
 
 
+
+
 add_filter( 'woocommerce_product_tabs', 'evakos_remove_product_tabs', 98 );
  
 function evakos_remove_product_tabs( $tabs ) {
@@ -86,7 +88,12 @@ function evakos_dequeue_styles( $enqueue_styles ) {
   
 /*  Include Walker Class for Bulma for Drop Down Menu */
 
+
+
 require_once( __DIR__ . '/lib/classes/nav-walker.php');
+register_nav_menus( array(
+    'primary' => __( 'Primary Menu', 'menuname' ),
+) );
 
 
 // Remove the sorting dropdown from Woocommerce
@@ -157,11 +164,11 @@ function evakos_login_state() {
 function evakos_css_scripts() {
 
  
-  wp_enqueue_style( 'cust-wc', get_template_directory_uri() . '/css/cust-wc.css', array());
+  
   wp_enqueue_style( 'bulma', get_template_directory_uri() . '/css/bulma.css', array());
   wp_enqueue_style( 'main', get_template_directory_uri() . '/css/main.css', array());
-  wp_enqueue_style( 'wc-cc', get_template_directory_uri() . '/css/wc-cc.css', array());
   wp_enqueue_style( 'stripe', get_template_directory_uri() . '/css/stripe.css', array());
+  wp_enqueue_style( 'cust-wc', get_template_directory_uri() . '/css/cust-wc.css', array());
   wp_enqueue_style( 'tabs', get_template_directory_uri() . '/css/tabs.css', array());
   wp_enqueue_style( 'radio', get_template_directory_uri() . '/css/radio.css', array());
   wp_enqueue_style( 'bulma-tabs', get_template_directory_uri() . '/css/bulma-tabs.css', array());
@@ -175,10 +182,30 @@ add_action( 'wp_enqueue_scripts', 'evakos_css_scripts');
 function evakos_js_scripts() {   
 
 
-  wp_enqueue_script( 'tabs', get_template_directory_uri() . '/js/tabs.js', true );
-  wp_enqueue_script( 'bulma', get_template_directory_uri()  . '/js/bulma.js', true );
+
+
+  wp_enqueue_script(
+    'tabs',                                 //slug
+    get_template_directory_uri() . '/js/tabs.js', //path
+    false,                                      //dependencies
+    false,                                                //version
+    true                                                  //footer
+  );
+
+  wp_enqueue_script(
+    'bulma',                                 //slug
+    get_template_directory_uri() . '/js/bulma.js', //path
+    false,                                      //dependencies
+    false,                                                //version
+    true                                                  //footer
+  );
 }
 add_action('wp_enqueue_scripts', 'evakos_js_scripts');
+
+
+
+
+
 
 
   
@@ -202,8 +229,13 @@ function evakos_add_typekit_fonts() {
   add_action( 'wp_enqueue_scripts', 'evakos_add_typekit_fonts' );
 
 
+  function evakos_get_orders_count_from_status( $status ){
+    global $wpdb;
 
+    // We add 'wc-' prefix when is missing from order staus
+    $status = 'wc-' . str_replace('wc-', '', $status);
 
-
-
-
+    return $wpdb->get_var("
+        SELECT count(ID)  FROM {$wpdb->prefix}posts WHERE post_status LIKE '$status' AND `post_type` LIKE 'shop_order'
+    ");
+}

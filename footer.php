@@ -52,7 +52,7 @@
                     </div>
                 </div>
             </div>
-            <script src="http://evakos-io.local/wp-content/themes/evakos/js/tabs.js?ver=4.9.8"></script>
+            <!-- <script src="http://evakos-io.local/wp-content/themes/evakos/js/tabs.js?ver=4.9.8"></script> -->
         </footer>
 			<!-- /footer -->
 

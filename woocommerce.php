@@ -71,7 +71,7 @@ echo '<a class="button is-white is-outlined" href="/my-account">
 			
 			<div class="container">
 				
-            <?php woocommerce_content(); ?>
+            <?php woocommerce_content(); ?> is-
 				
 				</div>
 

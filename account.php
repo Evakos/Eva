@@ -1,3 +1,14 @@
+<?php
+/**
+ * Template Name: Full Width Account Page
+ *
+ * @package WordPress
+ * @subpackage Evakos
+ * @since Evakos 1.0
+ */
+
+?>
+
 <?php get_header(); ?>
 
 <section class="hero is-info is-medium is-bg-fill">
@@ -66,14 +77,12 @@ echo '<a class="button is-white is-outlined" href="/my-account">
 </section>
 
 	<main role="main">
-		<!-- section DEFAULT PAGE.PHP-->
+		<!-- section-->
 		<section class="section">
 			
-			<div class="container">
+			<div class="container is-fluid is-marginless">
 				
-				<h1 class="title">
-					<?php the_title(); ?>
-				</h1>
+				
 
 		<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 

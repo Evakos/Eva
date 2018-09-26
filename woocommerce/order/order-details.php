@@ -33,7 +33,10 @@ if ( $show_downloads ) {
 	wc_get_template( 'order/order-downloads.php', array( 'downloads' => $downloads, 'show_title' => true ) );
 }
 ?>
-<section class="woocommerce-order-details">
+
+<div class="columns">
+  <div class="column">
+  <section class="woocommerce-order-details">
 	<?php do_action( 'woocommerce_order_details_before_order_table', $order ); ?>
 
 	<h2 class="woocommerce-order-details__title"><?php _e( 'Order details', 'woocommerce' ); ?></h2>
@@ -90,8 +93,17 @@ if ( $show_downloads ) {
 
 	<?php do_action( 'woocommerce_order_details_after_order_table', $order ); ?>
 </section>
-
-<?php
+  </div>
+  <div class="column">
+  <?php
 if ( $show_customer_details ) {
 	wc_get_template( 'order/order-details-customer.php', array( 'order' => $order ) );
 }
+?>
+  </div>
+  
+</div>
+
+
+
+

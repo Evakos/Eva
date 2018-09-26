@@ -1,12 +1,30 @@
-document.addEventListener('click', function (event) {
+document.querySelectorAll("#eks-nav-tab li").forEach(function (navEl) {
+  navEl.onclick = function () {
+    toggleTab(this.id, this.dataset.target);
+    console.log("Clicked!");
+  };
+});
 
-  // If the clicked element doesn't have the right selector, bail
-  if (!event.target.matches('#eks-nav-tab li')) return;
+function toggleTab(selectedNav, targetId) {
+  var navEls = document.querySelectorAll("#eks-nav-tab li");
 
-  // Don't follow the link
-  event.preventDefault();
+  navEls.forEach(function (navEl) {
+    if (navEl.id == selectedNav) {
+      navEl.classList.add("is-active");
+    } else {
+      if (navEl.classList.contains("is-active")) {
+        navEl.classList.remove("is-active");
+      }
+    }
+  });
 
-  // Log the clicked element in the console
-  console.log(event.target);
+  var tabs = document.querySelectorAll(".eks-tab-pane");
 
-}, false);
+  tabs.forEach(function (tab) {
+    if (tab.id == targetId) {
+      tab.style.display = "block";
+    } else {
+      tab.style.display = "none";
+    }
+  });
+}

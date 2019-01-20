@@ -80,15 +80,15 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 
                 <div class="eks-tab-pane" id="pane-1-<?php echo get_the_ID(); ?>">
                 
-
+                <?php the_field('overview'); ?>
                 </div>
 
                 <div class="eks-tab-pane" id="pane-2-<?php echo get_the_ID(); ?>">
-                
+                <?php the_field('details'); ?>
                 </div>
 
                 <div class="eks-tab-pane" id="pane-3-<?php echo get_the_ID(); ?>">
-                
+                <?php the_field('live_site'); ?>
                 </div>
 </li>
 

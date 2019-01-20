@@ -24,31 +24,44 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 
-<section class="hero">
-                    <div class="hero-body is-sec-fill mtlb">
-                    <div class="container">
-                            <h1 class="title">
-                            <?php
+
+                <section class="info-tiles">
+
+
+                
+                    <div class="tile is-ancestor has-text-centered">
+                        <div class="tile is-parent">
+
+                       
+                            <article class="tile is-child box">
+                            <div class="columns">
+
+                                <div class="column">
+                            <figure class="image is-128x128">
+  <img class="is-rounded" src="<?php echo esc_url( get_avatar_url( $default ) ); ?>">
+   
+
+                                <div class="column">
+                            <figure class="image is-128x128">
+  <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+
+</figure>
+</div>
+<div class="column">
+<?php
 	/* translators: 1: user display name 2: logout url */
 	printf(
 		__( 'Hello %1$s <span class = "small-txt">(not %1$s? <a href="%2$s">Log out</a>)</span>', 'woocommerce' ),
 		'<strong>' . esc_html( $current_user->display_name ) . '</strong>',
 		esc_url( wc_logout_url( wc_get_page_permalink( 'myaccount' ) ) )
 	);
-?></p>
-                            </h1>
-                            <h2 class="subtitle">
-                                I hope you are having a great day!
-                            </h2>
-                        </div>
-                    </div>
-                </section>
-                <section class="info-tiles">
-                    <div class="tile is-ancestor has-text-centered">
-                        <div class="tile is-parent">
-                            <article class="tile is-child box">
-                                <p class="title">439k</p>
-                                <p class="subtitle">Users</p>
+?>
+</div>
+
+<div>
+
+
+
                             </article>
                         </div>
                         <div class="tile is-parent">
@@ -56,7 +69,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                                 <p class="title">
 
                                  <?php // Display "completed" orders count
-echo evakos_get_orders_count_from_status( "completed" ); ?>
+echo eks_get_orders_count_from_status( "completed" ); ?>
 								 
 								</p>
                                 <p class="subtitle">Products</p>
@@ -67,17 +80,12 @@ echo evakos_get_orders_count_from_status( "completed" ); ?>
                                 <p class="title">
                                 
                                 <?php // Display "processing" orders count
-echo evakos_get_orders_count_from_status( "processing" ); ?>
+echo eks_get_orders_count_from_status( "processing" ); ?>
 
                                 <p class="subtitle">Open Orders</p>
                             </article>
                         </div>
-                        <div class="tile is-parent">
-                            <article class="tile is-child box">
-                                <p class="title">19</p>
-                                <p class="subtitle">Exceptions</p>
-                            </article>
-                        </div>
+                        
                     </div>
                 </section>
                 <div class="columns">
@@ -151,39 +159,17 @@ echo evakos_get_orders_count_from_status( "processing" ); ?>
                             </footer>
                         </div>
                     </div>
+
+
                     <div class="column is-6">
                         <div class="card">
                             <header class="card-header">
                                 <p class="card-header-title">
-                                    Inventory Search
+                                    Project Progress
 								</p>
 								
-								<ul class="steps">
-      <li class="steps-segment">
-        <span class="steps-marker">1</span>
-      </li>
-      <li class="steps-segment">
-        <span class="steps-marker">xyz</span>
-      </li>
-      <li class="steps-segment is-active">
-        <span class="steps-marker">-3-</span>
-      </li>
-      <li class="steps-segment">
-        <span class="steps-marker">★</span>
-      </li>
-      <li class="steps-segment">
-        <span class="steps-marker">
-          <span class="icon">
-            <i class="fa fa-check"></i>
-          </span>
-        </span>
-      </li>
-    </ul>
-
-
-
-
-
+								
+      
 
                                 <a href="#" class="card-header-icon" aria-label="more options">
                   <span class="icon">
@@ -193,14 +179,13 @@ echo evakos_get_orders_count_from_status( "processing" ); ?>
                             </header>
                             <div class="card-content">
                                 <div class="content">
-                                    <div class="control has-icons-left has-icons-right">
-                                        <input class="input is-large" type="text" placeholder="">
-                                        <span class="icon is-medium is-left">
-                      <i class="fa fa-search"></i>
-                    </span>
-                                        <span class="icon is-medium is-right">
-                      <i class="fa fa-check"></i>
-                    </span>
+                                    <div class="control">
+                            <ul class="progress-bar">
+          <li class="active">Step 1</li>
+          <li>Step 2</li>
+          <li>Step 3</li>
+          <li>Step 4</li>
+  </ul>
                                     </div>
                                 </div>
                             </div>
@@ -216,6 +201,10 @@ echo evakos_get_orders_count_from_status( "processing" ); ?>
                   </span>
                 </a>
                             </header>
+
+</div>
+
+
                             <div class="card-content">
                                 <div class="content">
                                     <div class="control has-icons-left has-icons-right">

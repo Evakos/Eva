@@ -1,5 +1,11 @@
 <?php
 
+
+include('customiser.php');
+
+require_once( __DIR__ . '/inc/login-validation.php');
+
+
 remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
 
 add_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_add_to_cart', 99 );
@@ -7,27 +13,27 @@ add_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_add_t
 
 /* Add WC Theme Support */
 
-function evakos_add_woocommerce_support() {
+function eks_add_woocommerce_support() {
   add_theme_support( 'woocommerce' );
   
 }
 
-add_action( 'after_setup_theme', 'evakos_add_woocommerce_support' );
+add_action( 'after_setup_theme', 'eks_add_woocommerce_support' );
 
 
 
 
 
-add_filter( 'woocommerce_product_tabs', 'evakos_remove_product_tabs', 98 );
+add_filter( 'woocommerce_product_tabs', 'eks_remove_product_tabs', 98 );
  
-function evakos_remove_product_tabs( $tabs ) {
+function eks_remove_product_tabs( $tabs ) {
     unset( $tabs['additional_information'] ); 
     return $tabs;
 }
 
 // remove Order Notes from checkout field in Woocommerce
-add_filter( 'woocommerce_checkout_fields' , 'evakos_alter_woocommerce_checkout_fields' );
-function evakos_alter_woocommerce_checkout_fields( $fields ) {
+add_filter( 'woocommerce_checkout_fields' , 'eks_alter_woocommerce_checkout_fields' );
+function eks_alter_woocommerce_checkout_fields( $fields ) {
      unset($fields['order']['order_comments']);
      return $fields;
 }
@@ -52,12 +58,12 @@ function wc_gallery_setup() {
 
 /* Add Excerpt Description to Product Page */
 
-function evakos_excerpt_in_product_archives() {   
+function eks_excerpt_in_product_archives() {   
   the_excerpt();
    
 }
 
-add_action( 'woocommerce_shop_loop_item_title', 'evakos_excerpt_in_product_archives', 40 );
+add_action( 'woocommerce_shop_loop_item_title', 'eks_excerpt_in_product_archives', 40 );
 
 
 
@@ -77,8 +83,8 @@ remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_l
 /* Remove Woocommerce Styles*/
 
 
-add_filter( 'woocommerce_enqueue_styles', 'evakos_dequeue_styles' );
-function evakos_dequeue_styles( $enqueue_styles ) {
+add_filter( 'woocommerce_enqueue_styles', 'eks_dequeue_styles' );
+function eks_dequeue_styles( $enqueue_styles ) {
 	unset( $enqueue_styles['woocommerce-general'] );	// Remove the gloss
 	//unset( $enqueue_styles['woocommerce-layout'] );		// Remove the layout
 	//unset( $enqueue_styles['woocommerce-smallscreen'] );	// Remove the smallscreen optimisation
@@ -89,10 +95,10 @@ function evakos_dequeue_styles( $enqueue_styles ) {
 /*  Include Walker Class for Bulma for Drop Down Menu */
 
 
-
 require_once( __DIR__ . '/lib/classes/nav-walker.php');
 register_nav_menus( array(
     'primary' => __( 'Primary Menu', 'menuname' ),
+    'account' => __( 'Account Menu', 'menuname2' ),
 ) );
 
 
@@ -122,31 +128,36 @@ function add_file_types_to_uploads($file_types){
 
 
 
-/* Add Theme Support */
-
-
-function evakos_custom_logo () {
-  
-  $defaults = array(
-     
-      'header-text' => array( 'site-title', 'site-description' ),
-     'height'      => 80,
-    'width'       => 150,
-    'flex-width' => true,
-    'flex-height' => true,
-  
-	
-  );
-  add_theme_support( 'custom-logo', $defaults );
-
-}
-add_action( 'after_setup_theme', 'evakos_custom_logo' );
 
 
 
+function eks_customize_register( $wp_customize ) {
+    $wp_customize->get_setting( 'eks_control_one' )->transport = 'postMessage';
+    // Add and manipulate theme images to be used.
+    $wp_customize->add_section('imageoner', array(
+    "title" => 'Home Page Images',
+    "priority" => 28,
+    "description" => __( 'Upload images to display on the homepage.', 'eks' )
+    ));
+    $wp_customize->add_setting('eks_control_one', array(
+    'default' => '',
+    'type' => 'theme_mod',
+    'capability' => 'edit_theme_options',
+    ));
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'eks_control_one', array(
+    'label' => __( 'Featured Home Page Image One', 'eks' ),
+    'section' => 'imageoner',
+    'settings' => 'eks_control_one',
+    ))
+    );
+    }
+    add_action( 'customize_register', 'eks_customize_register' );
 
-add_action('wp_head','evakos_login_state');
-function evakos_login_state() {
+
+
+
+/* add_action('wp_head','eks_login_state');
+function eks_login_state() {
 
     if ( is_user_logged_in() ) {
         $output="<style> .nav-login { display: none; } </style>";
@@ -155,31 +166,34 @@ function evakos_login_state() {
     }
 
     echo $output;
-}
+} */
 
 
 
 
 
-function evakos_css_scripts() {
+function eks_css_scripts() {
 
  
   
   wp_enqueue_style( 'bulma', get_template_directory_uri() . '/css/bulma.css', array());
-  wp_enqueue_style( 'main', get_template_directory_uri() . '/css/main.css', array());
+ 
   wp_enqueue_style( 'stripe', get_template_directory_uri() . '/css/stripe.css', array());
   wp_enqueue_style( 'cust-wc', get_template_directory_uri() . '/css/cust-wc.css', array());
+  wp_enqueue_style( 'account-wc', get_template_directory_uri() . '/css/account.css', array());
   wp_enqueue_style( 'tabs', get_template_directory_uri() . '/css/tabs.css', array());
   wp_enqueue_style( 'radio', get_template_directory_uri() . '/css/radio.css', array());
   wp_enqueue_style( 'bulma-tabs', get_template_directory_uri() . '/css/bulma-tabs.css', array());
   wp_enqueue_style( 'pulse', get_template_directory_uri() . '/css/pulse.css', array());
+  wp_enqueue_style( 'steps', get_template_directory_uri() . '/css/steps.css', array());
   wp_enqueue_style( 'cust-tabs', get_template_directory_uri() . '/css/cust-tabs.css', array());
   wp_enqueue_style( 'bulma-admin', get_template_directory_uri() . '/css/bulma-admin.css', array());
   wp_enqueue_style( 'bulma-pricingtable', get_template_directory_uri() . '/css/bulma-pricingtable.min.css');
+  wp_enqueue_style( 'main', get_template_directory_uri() . '/css/main.css', array());
 }
-add_action( 'wp_enqueue_scripts', 'evakos_css_scripts');
+add_action( 'wp_enqueue_scripts', 'eks_css_scripts');
 
-function evakos_js_scripts() {   
+function eks_js_scripts() {   
 
 
 
@@ -199,8 +213,33 @@ function evakos_js_scripts() {
     false,                                                //version
     true                                                  //footer
   );
+
+  wp_enqueue_script(
+    'eks-modal-login',                                 //slug
+    get_template_directory_uri() . '/js/eks-modal-login.js', //path
+    false,                                      //dependencies
+    false,                                                //version
+    true                                                  //footer
+  );
+
+  wp_enqueue_script(
+    'eks-modal-register',                                 //slug
+    get_template_directory_uri() . '/js/eks-modal-register.js', //path
+    false,                                      //dependencies
+    false,                                                //version
+    true                                                  //footer
+  );
+
+  wp_localize_script(
+    'eks-modal-login',
+    'example_ajax_obj',
+    array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) )
+  );
+
+
+
 }
-add_action('wp_enqueue_scripts', 'evakos_js_scripts');
+add_action('wp_enqueue_scripts', 'eks_js_scripts');
 
 
 
@@ -210,26 +249,26 @@ add_action('wp_enqueue_scripts', 'evakos_js_scripts');
 
   
 
-function evakos_add_google_fonts() {
+function eks_add_google_fonts() {
  
-wp_enqueue_style( 'evakos-google-fonts', 'https://fonts.googleapis.com/css?family=Josefin+Sans|Open+Sans|Roboto', false ); 
+wp_enqueue_style( 'eks-google-fonts', 'https://fonts.googleapis.com/css?family=Josefin+Sans|Open+Sans|Roboto', false ); 
 
 
 
 }
-add_action( 'wp_enqueue_scripts', 'evakos_add_google_fonts' );
+add_action( 'wp_enqueue_scripts', 'eks_add_google_fonts' );
 
-function evakos_add_typekit_fonts() {
+function eks_add_typekit_fonts() {
  
-  wp_enqueue_style( 'evakos-typekit-fonts', 'https://use.typekit.net/pmq0acn.css', false ); 
+  wp_enqueue_style( 'eks-typekit-fonts', 'https://use.typekit.net/pmq0acn.css', false ); 
   
   
   
   }
-  add_action( 'wp_enqueue_scripts', 'evakos_add_typekit_fonts' );
+  add_action( 'wp_enqueue_scripts', 'eks_add_typekit_fonts' );
 
 
-  function evakos_get_orders_count_from_status( $status ){
+  function eks_get_orders_count_from_status( $status ){
     global $wpdb;
 
     // We add 'wc-' prefix when is missing from order staus
@@ -239,3 +278,94 @@ function evakos_add_typekit_fonts() {
         SELECT count(ID)  FROM {$wpdb->prefix}posts WHERE post_status LIKE '$status' AND `post_type` LIKE 'shop_order'
     ");
 }
+
+
+/*----------------------------------------------------------------------------*/
+// redirects for login / logout
+/*----------------------------------------------------------------------------*/
+add_filter('woocommerce_login_redirect', 'login_redirect');
+
+function login_redirect($redirect_to) {
+
+    return home_url();
+
+}
+
+add_action('wp_logout','logout_redirect');
+
+function logout_redirect(){
+
+    wp_redirect( home_url() );
+    
+    exit;
+
+}
+
+
+
+
+function custom_action() {
+  try {
+    $creds = array(
+      'user_login'    => trim( $_POST['email'] ),
+      'user_password' => $_POST['password'],
+      'remember'      => true,
+    );
+
+    $validation_error = new WP_Error();
+    $validation_error = apply_filters( 'woocommerce_process_login_errors', $validation_error, $_POST['email'], $_POST['password'] );
+
+
+
+   
+    if ( $validation_error->get_error_code() ) {
+      throw new Exception( '<div class="eks-error animated bounceIn">' . '<strong>' . __( 'Error:', 'woocommerce' ) . '</strong>' . $validation_error->get_error_message() . '</div> ');
+    }
+
+    if ( empty( $creds['user_login'] ) ) {
+      throw new Exception( '<div class="eks-error animated bounceIn">' . '</strong> ' . __( 'Error:', 'woocommerce' ) . '</strong> ' . __( 'Username is required.', 'woocommerce' ) . '</div>');
+    }
+
+    if ( empty( $creds['user_password'] ) ) {
+      throw new Exception( '<div class="eks-error animated bounceIn">' . '</strong> ' . __( 'Error:', 'woocommerce' ) . '</strong> ' . __( 'Password is required.', 'woocommerce' ) . '</div>');
+    }
+
+    // On multisite, ensure user exists on current site, if not add them before allowing login.
+    if ( is_multisite() ) {
+      $user_data = get_user_by( is_email( $creds['user_login'] ) ? 'email' : 'login', $creds['user_login'] );
+      if ( $user_data && ! is_user_member_of_blog( $user_data->ID, get_current_blog_id() ) ) {
+        add_user_to_blog( get_current_blog_id(), $user_data->ID, 'customer' );
+      }
+    }
+
+    // Perform the login
+    $user = wp_signon( apply_filters( 'woocommerce_login_credentials', $creds ), is_ssl() );
+
+    if ( is_wp_error( $user ) ) {
+      $message = $user->get_error_message();
+      $message = '<div class="eks-error animated bounceIn">' . '</strong> ' . __( $message , 'woocommerce' ) . '</div>';
+      //$message = str_replace( '<strong>' . esc_html( $creds['user_login'] ) . '</strong>', '<strong>' . esc_html( $creds['user_login'] ) . '</strong>', $message );
+      //throw new Exception( $message );
+      echo $message;
+      die();
+    } else {
+
+      if ( ! empty( $_POST['redirect'] ) ) {
+        $redirect = $_POST['redirect'];
+      } elseif ( wc_get_raw_referer() ) {
+        $redirect = wc_get_raw_referer();
+      } else {
+        $redirect = wc_get_page_permalink( 'myaccount' );
+      }
+      echo 'succ';
+      die();
+    }
+  } catch ( Exception $e ) {
+    echo  $e->getMessage();
+    die();
+  }
+}
+
+add_action( 'wp_ajax_custom_action', 'custom_action' );
+add_action( 'wp_ajax_nopriv_custom_action', 'custom_action' );
+

@@ -1,7 +1,23 @@
 <?php get_header(); ?>
 
-<section class="hero is-info is-medium is-bg-fill">
-<div class="hero-head">
+<div class="modal" id="eks-reg-modal">
+  <div class="modal-background" id="eks-reg-modal-bg"></div>
+  <div class="modal-content has-text-centered" id="eks-reg-modal-content">
+  <?php get_template_part( 'partials/register', 'modal' ); ?>
+    </div>
+  <button class="modal-reg-close is-large" aria-label="close"></button>
+</div>
+
+<div class="modal" id="eks-modal">
+  <div class="modal-background" id="eks-modal-bg"></div>
+  <div class="modal-content has-text-centered" id="eks-modal-content">
+  <?php get_template_part( 'partials/login', 'modal' ); ?>
+    </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+<section class="hero is-info is-bg-fill">
+	      <div class="hero-head">
 <nav class="navbar container" role="navigation" aria-label="main navigation">
        
         <div class="navbar-brand">
@@ -39,30 +55,45 @@
         </span>
 
 
-                                   <span class="navbar-item">
+  <span class="navbar-item">
+
+                                   
 
 <?php if ( is_user_logged_in() ) {
-echo '<a class="button is-white is-outlined" href="/my-account">
-            <span class="icon">
-                <i class="fas fa-user-circle"></i>
-            </span>
-            <span>My Account</span>
-        </a>';
+
+
+        wp_nav_menu( array(
+            'theme_location'    => 'account',
+            'depth'             => 2,
+            'container'         => false,
+            // 'items_wrap'     => 'div',
+            'menu_class'        => 'btn sm-trans',
+            'menu_id'           => 'header-menu',
+            'after'             => "</div>",
+            'before'             => "test",
+            'walker'            => new Evakos_Nav_Walker())
+        );
+        
 } else {
-echo '<a class="button is-white is-outlined" href="/my-account">
-            <span class="icon">
+
+echo '<a class="btn sm-trans" id="modal-btn">
+
                 <i class="fas fa-cog"></i>
-            </span>
+          
             <span>Login</span>
-        </a>'; 
+        </a>      
+        
+        
+        
+        
+        
+        '; 
 }?>
 </span>
 
     </nav>
 
     </div>
-
-
 </section>
 
 	<main role="main">
@@ -71,7 +102,7 @@ echo '<a class="button is-white is-outlined" href="/my-account">
 			
 			<div class="container">
 				
-            <?php woocommerce_content(); ?> is-
+            <?php woocommerce_content(); ?>
 				
 				</div>
 

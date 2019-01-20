@@ -21,7 +21,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
 ?>
-<li <?php wc_product_class(); ?>>
+<li <?php wc_product_class(); ?>  section_id="<?php echo get_the_ID(); ?>">
 
 <?php
 	/**
@@ -45,26 +45,28 @@ if ( empty( $product ) || ! $product->is_visible() ) {
     do_action( 'woocommerce_after_shop_loop_item' );
 
     ?>
+                        
+                        
 
 
-    <div class="evakos-prod-meta-box">
+    <div class="evakos-prod-meta-box" post_id ="<?php echo get_the_ID(); ?>">
 
 
-	<div class="tabs is-boxed is-centered main-menu" id="eks-nav-tab">
+	<div  class="tabs is-boxed is-centered main-menu" id="eks-nav-tab">
                 <ul>
-                    <li data-target="pane-1" id="1" class="is-active">
+                    <li data-target="pane-1-<?php echo get_the_ID(); ?>" id="1-<?php echo get_the_ID(); ?>" class="is-active">
                         <a>
                             <span class="icon is-small"><i class="fas fa-eye"></i></span>
                             <span>Overview</span>
                         </a>
                     </li>
-                    <li data-target="pane-2" id="2">
+                    <li data-target="pane-2-<?php echo get_the_ID(); ?>" id="2-<?php echo get_the_ID(); ?>">
                         <a>
                             <span class="icon is-small"><i class="fas fa-clipboard-list"></i></span>
                             <span>Features</span>
                         </a>
                     </li>
-                    <li data-target="pane-3" id="3">
+                    <li data-target="pane-3-<?php echo get_the_ID(); ?>" id="3-<?php echo get_the_ID(); ?>">
                         <a>
                             <span class="pulse"></span>
                             <span>Live Site</span>
@@ -76,33 +78,17 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 
             <div class="eks-tab-content">
 
-                <div class="eks-tab-pane" id="pane-1">
-<?php
-                /**
-	 * Hook: woocommerce_shop_loop_item_title.
-	 *
-	 * @hooked woocommerce_template_loop_product_title - 10
-     * 
-	 */
-
-            do_action( 'woocommerce_shop_loop_item_title' );
-
-            
-            
-            ?>
+                <div class="eks-tab-pane" id="pane-1-<?php echo get_the_ID(); ?>">
+                
 
                 </div>
 
-                <div class="eks-tab-pane" id="pane-2">
-                <h1>Two</h1>
+                <div class="eks-tab-pane" id="pane-2-<?php echo get_the_ID(); ?>">
+                
                 </div>
 
-                <div class="eks-tab-pane" id="pane-3">
-                <h1>Three</h1>
-                </div>
-
-                <div class="eks-tab-pane" id="pane-4">
-                <h1>Four</h1>
+                <div class="eks-tab-pane" id="pane-3-<?php echo get_the_ID(); ?>">
+                
                 </div>
 </li>
 

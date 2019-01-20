@@ -24,9 +24,14 @@ wc_print_notices();
 
 ?>
 
+
+
+
+
+
 <div class="container is-fluid is-marginless">
   <div class="columns">
-  <div class="column is-one-fifth">
+  <div class="column is-2 has-background-grey-darker npdr">
 	  
 	  <?php do_action( 'woocommerce_account_navigation' ); ?>
      

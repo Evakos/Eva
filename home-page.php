@@ -120,7 +120,7 @@ echo '<a class="btn sm-trans" id="modal-btn">
 
 echo '<a href="/my-account/" class="btn lg-opaque">Dashboard</a>';
 } else {
-echo '<button class="btn lg-trans" id="modal-reg-btn">Create Account</button>'; 
+echo '<button class="btn lg-opaque" id="modal-reg-btn">Create Account</button>'; 
 }?>
 
 

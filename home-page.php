@@ -56,15 +56,15 @@
 
         <?php
         wp_nav_menu( array(
-            'theme_location'    => 'primary',
-            'depth'             => 2,
-            'container'         => false,
-            // 'items_wrap'     => 'div',
-            'menu_class'        => 'navbar-menu',
-            'menu_id'           => 'header-menu',
-            'after'             => "</div>",
-            'walker'            => new Evakos_Nav_Walker())
-        );
+          'theme_location'    => 'primary',
+          'depth'             => 2,
+          'container'         => false,
+          // 'items_wrap'        => 'div',
+          'menu_class'        => 'navbar-menu',
+          'menu_id'           => 'primary-menu',
+          'after'             => "</div>",
+          'walker'            => new Navwalker())
+      );
         ?>
 
         </span>
@@ -76,17 +76,16 @@
 
 <?php if ( is_user_logged_in() ) {
 
-
-        wp_nav_menu( array(
-            'theme_location'    => 'account',
-            'depth'             => 2,
-            'container'         => false,
-            'menu_class'        => 'sm-trans',
-            'menu_id'           => 'header-menu',
-            'after'             => "</div>",
-            'before'             => "test",
-            'walker'            => new Evakos_Nav_Walker())
-        );
+wp_nav_menu( array(
+  'theme_location'    => 'account',
+  'depth'             => 2,
+  'container'         => false,
+  // 'items_wrap'        => 'div',
+  'menu_class'        => 'navbar-menu',
+  'menu_id'           => 'primary-menu',
+  'after'             => "</div>",
+  'walker'            => new Navwalker())
+);
         
 } else {
 

@@ -16,7 +16,7 @@
  * License URI: https://github.com/Poruno/Bulma-Navwalker/blob/master/LICENSE
  */
 
-	class Evakos_Nav_Walker extends Walker_Nav_Menu {
+	class Navwalker extends Walker_Nav_Menu {
 
         public function start_lvl( &$output, $depth = 0, $args = array() ) {
            

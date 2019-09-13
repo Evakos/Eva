@@ -12,25 +12,26 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce/Templates
- * @version 3.4.0
+ * @version 3.6.0
  */
+
 defined( 'ABSPATH' ) || exit;
+
 global $product;
+
 // Ensure visibility.
 if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
 ?>
-<li <?php wc_product_class(); ?>  section_id="<?php echo get_the_ID(); ?>">
-
-<?php
+<li <?php wc_product_class( '', $product ); ?>>
+	<?php
 	/**
 	 * Hook: woocommerce_before_shop_loop_item.
 	 *
 	 * @hooked woocommerce_template_loop_product_link_open - 10
 	 */
-    do_action( 'woocommerce_before_shop_loop_item' );
-    
+	do_action( 'woocommerce_before_shop_loop_item' );
 
 	/**
 	 * Hook: woocommerce_before_shop_loop_item_title.
@@ -38,59 +39,40 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 * @hooked woocommerce_show_product_loop_sale_flash - 10
 	 * @hooked woocommerce_template_loop_product_thumbnail - 10
 	 */
-    do_action( 'woocommerce_before_shop_loop_item_title' );
+	do_action( 'woocommerce_before_shop_loop_item_title' );
 
-    
-    
-    do_action( 'woocommerce_after_shop_loop_item' );
+	/**
+	 * Hook: woocommerce_shop_loop_item_title.
+	 *
+	 * @hooked woocommerce_template_loop_product_title - 10
+	 */?>
+	<div class="product-meta-box">
 
-    ?>
-                        
-                        
+	<div class="meta-grid">
 
+<div class="mb 1"><i class="fas fa-user"></i></div>
+<div class="mb 2"><i class="fas fa-user"></i></div>
+<div class="mb 3"><i class="fas fa-user"></i></div>
 
-    <div class="evakos-prod-meta-box" post_id ="<?php echo get_the_ID(); ?>">
+	</div>
+		<?
+	do_action( 'woocommerce_shop_loop_item_title' );
 
+	/**
+	 * Hook: woocommerce_after_shop_loop_item_title.
+	 *
+	 * @hooked woocommerce_template_loop_rating - 5
+	 * @hooked woocommerce_template_loop_price - 10
+	 */
+	do_action( 'woocommerce_after_shop_loop_item_title' );
 
-	<div  class="tabs is-boxed is-centered main-menu" id="eks-nav-tab">
-                <ul>
-                    <li data-target="pane-1-<?php echo get_the_ID(); ?>" id="1-<?php echo get_the_ID(); ?>" class="is-active">
-                        <a>
-                            <span class="icon is-small"><i class="fas fa-eye"></i></span>
-                            <span>Overview</span>
-                        </a>
-                    </li>
-                    <li data-target="pane-2-<?php echo get_the_ID(); ?>" id="2-<?php echo get_the_ID(); ?>">
-                        <a>
-                            <span class="icon is-small"><i class="fas fa-clipboard-list"></i></span>
-                            <span>Features</span>
-                        </a>
-                    </li>
-                    <li data-target="pane-3-<?php echo get_the_ID(); ?>" id="3-<?php echo get_the_ID(); ?>">
-                        <a>
-                            <span class="pulse"></span>
-                            <span>Live Site</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-
-            <div class="eks-tab-content">
-
-                <div class="eks-tab-pane" id="pane-1-<?php echo get_the_ID(); ?>">
-                
-                <?php the_field('overview'); ?>
-                </div>
-
-                <div class="eks-tab-pane" id="pane-2-<?php echo get_the_ID(); ?>">
-                <?php the_field('details'); ?>
-                </div>
-
-                <div class="eks-tab-pane" id="pane-3-<?php echo get_the_ID(); ?>">
-                <?php the_field('live_site'); ?>
-                </div>
+	/**
+	 * Hook: woocommerce_after_shop_loop_item.
+	 *
+	 * @hooked woocommerce_template_loop_product_link_close - 5
+	 * @hooked woocommerce_template_loop_add_to_cart - 10
+	 */
+	do_action( 'woocommerce_after_shop_loop_item' );
+	?>
+	</div>
 </li>
-
-
-

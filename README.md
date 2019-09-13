@@ -1,3 +1,5 @@
-# Evakos IO
+# Evakos IO 
+# Another Custom WordPress/WooCommerce Theme
 
-You can run but you can't hide your legs.
+
+

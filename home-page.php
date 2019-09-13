@@ -160,8 +160,7 @@ echo '<button class="btn lg-trans" id="modal-reg-btn">Create Account</button>';
           </span>
           <h4 class="title is-4 has-x-small-margin-top">Rocket Powered</h1>
           <div class="is-divider"></div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in elit tempus, sodales dolor eu, porttitor nisi.
-            Vestibulum accumsan elit ut iaculis eleifend. Vivamus ornare posuere augue in convallis.</p>
+          <p>Hello.</p>
         </div>
       </div>
       <div class="columns has-small-margin-top">

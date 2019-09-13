@@ -1,5 +1,5 @@
 <!doctype html>
-<html <?php language_attributes(); ?> class="no-js">
+<html <?php language_attributes(); ?> >
 	<head>
         <meta charset="<?php bloginfo('charset'); ?>">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -14,6 +14,8 @@
 
         <link rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
        
    
         <?php wp_head(); ?>

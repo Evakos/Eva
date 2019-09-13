@@ -1,5 +1,22 @@
 <?php
 
+add_theme_support( 'woocommerce' );
+
+/**
+ * Set WooCommerce image dimensions upon theme activation
+ */
+// Remove each style one by one
+add_filter( 'woocommerce_enqueue_styles', 'jk_dequeue_styles' );
+function jk_dequeue_styles( $enqueue_styles ) {
+	unset( $enqueue_styles['woocommerce-general'] );	// Remove the gloss
+	unset( $enqueue_styles['woocommerce-layout'] );		// Remove the layout
+	unset( $enqueue_styles['woocommerce-smallscreen'] );	// Remove the smallscreen optimisation
+	return $enqueue_styles;
+}
+
+// Or just remove them all in one line
+add_filter( 'woocommerce_enqueue_styles', '__return_false' );
+
 
 include('customiser.php');
 
@@ -92,7 +109,7 @@ function eks_dequeue_styles( $enqueue_styles ) {
 }
 
   
-/*  Include Walker Class for Bulma for Drop Down Menu */
+/*  Include Walker Class for Drop Downs*/
 
 
 require_once( __DIR__ . '/lib/classes/nav-walker.php');
@@ -131,27 +148,7 @@ function add_file_types_to_uploads($file_types){
 
 
 
-function eks_customize_register( $wp_customize ) {
-    $wp_customize->get_setting( 'eks_control_one' )->transport = 'postMessage';
-    // Add and manipulate theme images to be used.
-    $wp_customize->add_section('imageoner', array(
-    "title" => 'Home Page Images',
-    "priority" => 28,
-    "description" => __( 'Upload images to display on the homepage.', 'eks' )
-    ));
-    $wp_customize->add_setting('eks_control_one', array(
-    'default' => '',
-    'type' => 'theme_mod',
-    'capability' => 'edit_theme_options',
-    ));
-    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'eks_control_one', array(
-    'label' => __( 'Featured Home Page Image One', 'eks' ),
-    'section' => 'imageoner',
-    'settings' => 'eks_control_one',
-    ))
-    );
-    }
-    add_action( 'customize_register', 'eks_customize_register' );
+
 
 
 
@@ -176,26 +173,33 @@ function eks_css_scripts() {
 
  
   
-  wp_enqueue_style( 'bulma', get_template_directory_uri() . '/css/bulma.css', array());
+  // wp_enqueue_style( 'bulma', get_template_directory_uri() . '/css/bulma.css', array());
  
-  wp_enqueue_style( 'stripe', get_template_directory_uri() . '/css/stripe.css', array());
-  wp_enqueue_style( 'cust-wc', get_template_directory_uri() . '/css/cust-wc.css', array());
-  wp_enqueue_style( 'account-wc', get_template_directory_uri() . '/css/account.css', array());
-  wp_enqueue_style( 'tabs', get_template_directory_uri() . '/css/tabs.css', array());
-  wp_enqueue_style( 'radio', get_template_directory_uri() . '/css/radio.css', array());
-  wp_enqueue_style( 'bulma-tabs', get_template_directory_uri() . '/css/bulma-tabs.css', array());
-  wp_enqueue_style( 'pulse', get_template_directory_uri() . '/css/pulse.css', array());
-  wp_enqueue_style( 'steps', get_template_directory_uri() . '/css/steps.css', array());
-  wp_enqueue_style( 'cust-tabs', get_template_directory_uri() . '/css/cust-tabs.css', array());
-  wp_enqueue_style( 'bulma-admin', get_template_directory_uri() . '/css/bulma-admin.css', array());
-  wp_enqueue_style( 'bulma-pricingtable', get_template_directory_uri() . '/css/bulma-pricingtable.min.css');
-  wp_enqueue_style( 'main', get_template_directory_uri() . '/css/main.css', array());
+  // wp_enqueue_style( 'stripe', get_template_directory_uri() . '/css/stripe.css', array());
+  // wp_enqueue_style( 'cust-wc', get_template_directory_uri() . '/css/cust-wc.css', array());
+  // wp_enqueue_style( 'account-wc', get_template_directory_uri() . '/css/account.css', array());
+  // wp_enqueue_style( 'tabs', get_template_directory_uri() . '/css/tabs.css', array());
+  // wp_enqueue_style( 'radio', get_template_directory_uri() . '/css/radio.css', array());
+  // wp_enqueue_style( 'bulma-tabs', get_template_directory_uri() . '/css/bulma-tabs.css', array());
+  // wp_enqueue_style( 'pulse', get_template_directory_uri() . '/css/pulse.css', array());
+  // wp_enqueue_style( 'steps', get_template_directory_uri() . '/css/steps.css', array());
+  // wp_enqueue_style( 'cust-tabs', get_template_directory_uri() . '/css/cust-tabs.css', array());
+  // wp_enqueue_style( 'bulma-admin', get_template_directory_uri() . '/css/bulma-admin.css', array());
+  // wp_enqueue_style( 'bulma-pricingtable', get_template_directory_uri() . '/css/bulma-pricingtable.min.css');
+  wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css', array());
 }
 add_action( 'wp_enqueue_scripts', 'eks_css_scripts');
 
 function eks_js_scripts() {   
 
 
+  wp_enqueue_script(
+    'sticky',                                 //slug
+    get_template_directory_uri() . '/js/sticky.js', //path
+    false,                                      //dependencies
+    false,                                                //version
+    true                                                  //footer
+  );
 
 
   wp_enqueue_script(

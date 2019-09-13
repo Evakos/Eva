@@ -1,0 +1,82 @@
+/* ----------------------------------------------------------------------------
+* Structure
+* ------------------------------------------------------------------------- */
+
+/* global box-sizing */
+*,
+*:after,
+*:before {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+/* html element 62.5% font-size for REM use */
+html {
+    // font-size: 62.5%;
+    height:100%;
+    min-height:100%;
+}
+
+body {
+    font: 400 16px/1.4;
+    font-family: $eks_font--main;
+    color: $w;
+    margin: 0;
+    background-color: $w1;
+    height:100%;
+    min-height:100%;
+    word-break: break-word;
+    -webkit-word-break: break-word;
+}
+
+
+ol,
+ul {
+  list-style: none;
+}
+
+
+
+pre, blockquote, form, figure, p, dl  {
+	margin-bottom: 1.3em;
+}
+
+
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+ 
+  text-decoration:none;
+  cursor: pointer;
+}
+
+
+h1 {
+	display: block;
+	font-size: 5rem;
+	margin-top: 0.2rem;
+	margin-bottom: 0.2em;
+	font-weight: bold;
+}
+
+h2 {
+	display: block;
+	font-size: 2rem;
+	margin-top: 0.2rem;
+	margin-bottom: 0.2em;
+	font-weight: bold;
+}
+h3 {
+	display: block;
+	font-size: 1rem;
+	margin-top: 0.2rem;
+	margin-bottom: 0.2em;
+	font-weight: bold;
+}

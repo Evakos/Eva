@@ -12,6 +12,8 @@ var closeBtn = document.getElementsByClassName("modal-close")[0];
 
 // When the user clicks the button, open the modal
 openBtn.onclick = function () {
+
+  console.log('Open Button');
   //eksModal.style.display = "flex";
   document.getElementById("modal_login_form").reset();
   document.getElementById("auth-msg").innerHTML = "";
@@ -25,8 +27,6 @@ closeBtn.onclick = function () {
 
 // When the user clicks anywhere outside of the modal, close it
 
-
-
 document.onclick = function (event) {
 
   if (event.target == eksModalBg) {
@@ -34,7 +34,6 @@ document.onclick = function (event) {
     console.log("Out");
   }
 };
-
 
 function eks_login_auth() {
   document.getElementById("auth-msg").innerHTML = "";
@@ -64,10 +63,10 @@ function eks_login_auth() {
         } else {
           document.getElementById("auth-msg").innerHTML = http.responseText;
 
-          var modal_login_btn = document.getElementById('modal_login_btn');
+          var modalLoginBtn = document.getElementById('modal-login-btn');
           loadingdiv.style.display = "none";
-          modal_login_btn.innerHTML = "Log In";
-          document.getElementById("modal_login_btn").disabled = false;
+          modalLoginBtn.innerHTML = "Log In";
+          document.getElementById("modal-login-btn").disabled = false;
           document.getElementById("username").disabled = false;
           document.getElementById("password").disabled = false;
           document.getElementById("rememberme").disabled = false;
@@ -86,18 +85,18 @@ node.setAttribute("class", "eks-success animated bounceIn");
 
 
 var form = document.getElementById("modal_login_form");
-var modal_login = document.getElementById("modal_login_btn");
+var modal_login = document.getElementById("modal-login-btn");
 form.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  var modal_login_btn = document.getElementById('modal_login_btn');
+  var modalLoginBtn = document.getElementById('modal-login-btn');
   var loadingdiv = document.getElementById('loading');
   loadingdiv.style.display = "block";
-  document.getElementById("modal_login_btn").disabled = true;
+  document.getElementById("modal-login-btn").disabled = true;
   document.getElementById("username").disabled = true;
   document.getElementById("password").disabled = true;
   document.getElementById("rememberme").disabled = true;
-  modal_login_btn.innerHTML = '<span class="spinner"></span> Logging In';
+  modalLoginBtn.innerHTML = '<span class="spinner"></span> Logging In';
   eks_login_auth();
 
 });

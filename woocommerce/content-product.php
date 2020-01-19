@@ -25,7 +25,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 }
 ?>
 <li <?php wc_product_class( '', $product ); ?>>
-	<?php
+    <?php
 	/**
 	 * Hook: woocommerce_before_shop_loop_item.
 	 *
@@ -46,16 +46,16 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 *
 	 * @hooked woocommerce_template_loop_product_title - 10
 	 */?>
-	<div class="product-meta-box">
+    <div class="product-meta-box">
 
-	<div class="meta-grid">
+        <div class="meta-grid">
 
-<div class="mb 1"><i class="fas fa-user"></i></div>
-<div class="mb 2"><i class="fas fa-user"></i></div>
-<div class="mb 3"><i class="fas fa-user"></i></div>
+            <div class="mb 1"><i class="fas fa-user"></i></div>
+            <div class="mb 2"><i class="fas fa-user"></i></div>
+            <div class="mb 3"><i class="fas fa-user"></i></div>
 
-	</div>
-		<?
+        </div>
+        <?php
 	do_action( 'woocommerce_shop_loop_item_title' );
 
 	/**
@@ -74,5 +74,5 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 */
 	do_action( 'woocommerce_after_shop_loop_item' );
 	?>
-	</div>
+    </div>
 </li>

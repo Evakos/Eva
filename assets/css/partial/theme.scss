@@ -19,70 +19,103 @@ Use it to make something cool, have fun, and share what you've learned with othe
   display: grid;
   width: 100%;
   height: 100%;
-  grid-template-areas:
-    'hero hero'
-    'main main'
-    'footer footer';
-  grid-template-rows: 100vh 1fr 1fr;
+  grid-template-areas: 'hero''main''footer';
+  grid-template-rows: 650px 1fr 20px;
   grid-template-columns: 1fr;
+}
+
+.wrapper>hero {
+  grid-area: hero;
 }
 
 .hero {
   grid-area: hero;
-  background-color: $c1;
+
 }
 
-.wrapper > main {
+.wrapper>main {
   grid-area: main;
-  background-color: #ffff64;
+
 }
 
-.wrapper > footer {
+.wrapper>footer {
   grid-area: footer;
-  background-color: #8cffa0;
+
+}
+
+.page-wrapper {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-areas: 'section''footer';
+  grid-template-rows: 100vh 1fr;
+  grid-template-columns: 1fr;
+}
+
+.page-wrapper>section {
+  grid-area: section;
+}
+
+.page-wrapper>footer {
+  grid-area: footer;
 }
 
 /* Containers */
 
-.container {
-  width: 1380px;
+.row {
+  display: flex;
+  width: 1280px;
   margin: auto;
+  margin-top: 150px;
 }
+
+.col {
+  flex: 50%;
+  position: relative;
+}
+
 
 /* Hero */
 
-.hero::after {
-  width: 60vw;
-  height: 60vw;
-  bottom: -30vw;
-  left: 80vw;
+.hero {
+  background: url("img/hero.svg") no-repeat;
+  background-position: 50% bottom;
+  background-size: cover;
 }
 
-.hero::before,
-.hero::after {
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  position: absolute;
-  content: '';
-  display: block;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10rem;
-}
+// .hero::after {
+//   width: 60vw;
+//   height: 60vw;
+//   bottom: -30vw;
+//   left: 80vw;
+// }
 
-.hero::before {
-  width: 80vw;
-  height: 80vw;
-  bottom: -40vw;
-  left: 25vw;
-}
+// .hero::before,
+// .hero::after {
+//   -webkit-transform: rotate(-45deg);
+//   -moz-transform: rotate(-45deg);
+//   transform: rotate(-45deg);
+//   position: absolute;
+//   content: '';
+//   display: block;
+//   background: rgba(255, 255, 255, 0.05);
+//   border-radius: 10rem;
+// }
+
+// .hero::before {
+//   width: 80vw;
+//   height: 80vw;
+//   bottom: -40vw;
+//   left: 25vw;
+// }
 
 /* Naigation */
+
 .nav-header {
   z-index: 10;
   position: fixed;
-  height: 130px;
-  background-color: $c1;
+  height: 80px;
+  background-color: $p;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.15);
   width: 100%;
 }
@@ -101,19 +134,25 @@ Use it to make something cool, have fun, and share what you've learned with othe
   align-items: center;
 }
 
-.nav-bar-left {
+// .text-box {
+//   position: relative;
+//   top: 30%;
+
+// }
+
+.box {
+  padding: 1rem 3rem;
+  margin-top: 10%;
 }
 
 .text-box {
-  position: absolute;
-  top: 30%;
-  width: 30%;
+  width: 80%;
+  margin-top: 10%;
 }
 
-// nav {
-//   margin: 35px 0;
-//   background-color: #ff4649;
-// }
+.nav {
+  margin-right: 1rem
+}
 
 .primary-menu {
   display: flex;
@@ -127,10 +166,23 @@ Use it to make something cool, have fun, and share what you've learned with othe
 }
 
 .primary-menu a {
-	padding: 0 20px;
-	color: white;
-	text-decoration: none;
-	border-right: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 0 5px;
+  color: white;
+  text-decoration: none;
+  border-right: 1px solid rgba(0, 0, 0, 0.15);
+  font-size: .9rem;
+  font-weight: 700;
+}
+
+.primary-menu li {
+  padding: 1rem 0.5rem;
+
+}
+
+.primary-menu li ul li {
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  padding: 0;
 }
 
 .primary-menu li ul {
@@ -140,11 +192,12 @@ Use it to make something cool, have fun, and share what you've learned with othe
   opacity: 0;
   transition: visibility 0s, opacity 0.5s linear;
 }
-.primary-menu li:hover > ul {
+
+.primary-menu li:hover>ul {
   /* display: flex; */
   /* position: absolute; */
   top: 90px;
-  background-color: $c1;
+  background-color: $w;
   /* min-height: 200px; */
   box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.1);
   /* right: 90px; */
@@ -174,40 +227,158 @@ Use it to make something cool, have fun, and share what you've learned with othe
   display: list-item;
   position: relative;
 }
+
 .primary-menu ul ul ul li {
   position: relative;
   top: -60px;
   left: 230px;
 }
 
-.primary-menu li > a:after  {
-
-font-family: 'Font Awesome 5 Free';
-font-weight: 900;
-content: '\f0d7';
-padding-left:0.5rem;
-
+.primary-menu li>a:after {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  content: '\f107';
+  padding-left: 0.5rem;
 }
 
 
 
 
-.primary-menu li > a:only-child:after {
+
+
+.primary-menu li>a:only-child:after {
   content: '';
 }
 
-.primary-menu li ul li {
-  width: 100%;
-  border-bottom: 1px solid #ccc;
-}
 .primary-menu li ul li:hover {
   background-color: var(--third-color);
 }
 
+.account-dropdown span {
+  content: "";
+  background: url("img/icons/user.svg") no-repeat;
+  color: white;
+  display: block;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+  background-size: 40%;
+  background-color: rgba(255, 255, 255, .75);
+  border-radius: 99px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.account-dropdown span:hover {
+
+  background-color: rgba(255, 255, 255, 1);
+
+}
+
+.account-dropdown {
+  position: relative;
+  display: flex;
+}
+
+.account-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: black;
+  min-width: 280px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  left: -15rem;
+  top: 3.5rem;
+}
+
+.account-dropdown-content a {
+
+  color: white;
+}
+
+.account-dropdown:hover .account-dropdown-content {
+  display: flex;
+}
+
+
+
+/* Sevices Section */
+
+.services-grid-container {
+  display: grid;
+  grid-template-columns: 400px auto auto auto;
+  grid-gap: 10px;
+  padding: 10px;
+}
+
+.services-grid-container>div {
+
+  padding: 1em;
+}
+
+.services-item-1 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  background-color: transparent;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.services-item-2,
+.services-item-3,
+.services-item-4 {
+
+  background-color: $s;
+  text-align: center;
+
+}
+
+.services-item-2 {
+  margin-left: 1rem;
+}
+
+.prices-grid-container {
+  display: grid;
+  grid-template-columns: 350px 350px 350px;
+  grid-gap: 10px;
+  padding: 10px;
+  justify-content: center;
+}
+
+.prices-grid-container>div {
+  background-color: #e7fcfb;
+  padding: 2rem;
+  text-align: center;
+}
+
+// .prices-item-1 {
+//   grid-column-start: 1;
+//   grid-column-end: 2;
+//   background-color: transparent;
+//   border-right: 1px solid #1e1e1e;
+// }
+
+// .prices-item-2,
+// .prices-item-3,
+// .prices-item-4 {
+
+//   background-color: $s;
+
+// }
+
+
+
+
+
+
+
+
+
+
 /* Logo */
 
 img.custom-logo {
-  max-width: 50px;
+  max-width: 30px;
   height: auto;
 }
 
@@ -215,47 +386,299 @@ img.custom-logo {
 
 .button {
   display: inline-block;
-  background-color: white;
-  border-radius: 99px;
-  color: $c1;
+  background-color: #e7fcfb;
+  color: black;
   padding: 1rem 3rem;
-  box-shadow: $s1;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+  border: 0;
+  font-weight: bold;
 }
+
+.button:hover {
+  background-color: $s;
+  color: $w;
+
+}
+
+
+.footer {
+  background-color: black
+}
+
+.footer a {
+  color: $w;
+  font-size: 90%;
+}
+
+.footer a:hover {
+  color: $w;
+}
+
 
 /*Account Menu*/
 
-// .account-menu li a::before {
-//   visibility: visible;
-//   font-family: 'Font Awesome 5 Free';
-//   font-weight: 900;
-//   content: '\f007';
-// }
-
-// .account-menu li a {
-//   visibility: hidden;
-// }
+.account-menu {
+  /* display: flex; */
+  width: 200px;
+  text-align: center;
+  justify-content: center;
+  color: white;
+}
 
 .account-menu i {
-	background-color: transparent;
-	padding: 1rem;
-	border-radius: 50%;
+  background-color: transparent;
+  padding: 1rem;
+  border-radius: 50%;
   color: $w;
   transition: 1s;
-	/* display: block; */
+  /* display: block; */
 }
 
 .account-menu i:hover {
-	background-color: $w;
-	padding: 1rem;
-	border-radius: 50%;
-  color: $c1;
+  background-color: $w;
+  padding: 1rem;
+  border-radius: 50%;
+  color: $w;
   transition: 1s;
-	/* display: block; */
+  /* display: block; */
 }
 
-.account-menu {
-	display: flex;
-	width: 200px;
-	text-align: center;
-	justify-content: center;
+
+/*Modals*/
+
+.modal {
+  display: none
+}
+
+.modal-display {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  background-color: transparent;
+  z-index: 99;
+}
+
+.login-badge {
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 1);
+  height: 150px;
+  width: 150px;
+  margin: 0 auto;
+  margin-bottom: -85px;
+}
+
+.modal-headings {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.modal-card,
+.modal-content {
+  margin: 0 auto;
+  max-height: calc(100vh - 40px);
+  width: 480px;
+}
+
+.modal-content label.checkbox {
+  margin-top: 1rem;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.modal-content .box {
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.17);
+  -moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.17);
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.17);
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 3rem;
+}
+
+.modal-content .eks-error,
+.modal-content #auth-msg>.eks-success {
+  background: rgba(229, 0, 0, 0.5);
+  color: white;
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  margin-bottom: 1rem;
+  border-radius: 99px;
+}
+
+.modal-content #auth-msg>.eks-success {
+  background: #00d1b2;
+}
+
+.modal-content .eks-error:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f06a";
+  padding-right: 0.4rem;
+}
+
+.modal-content #auth-msg>.eks-success {
+  background: #00d1b2;
+}
+
+.modal-content .eks-error:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f06a";
+  padding-right: 0.4rem;
+}
+
+
+.modal-content #auth-msg>.eks-success:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f058";
+  padding-right: 0.4rem;
+}
+
+.modal-content #auth-msg>.eks-success:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f058";
+  padding-right: 0.4rem;
+}
+
+.modal-content strong {
+  color: white;
+  font-weight: bolder;
+  margin-right: 0.25rem;
+}
+
+.modal-content-meta {
+
+  text-align: center;
+
+
+}
+
+.modal-content-meta a {
+
+  color: white;
+
+
+}
+
+.modal-content .title:not(.is-spaced)+.subtitle {
+  margin-top: auto;
+}
+
+.modal-content #auth-msg a {
+  color: beige;
+  cursor: pointer;
+  text-decoration: underline;
+  font-style: italic;
+}
+
+.modal-content .input {
+  background-color: #fafafa;
+  border: 0;
+  padding: 1rem;
+  width: 100%;
+  border-radius: 99px;
+  margin-bottom: 1rem;
+}
+
+#modal_login_form {
+  width: 100%
+}
+
+.btn-login {
+  display: inline-block;
+  background-color: #4829b2;
+  border-radius: 99px;
+  color: white;
+  padding: 1rem 3rem;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 100%;
+  border: 0;
+}
+
+/* Hide the browser's default checkbox */
+// .modal-content input {
+//   position: absolute;
+//   opacity: 0;
+//   cursor: pointer;
+//   height: 0;
+//   width: 0;
+// }
+
+/* Create a custom checkbox */
+.rememberme {
+  //position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+label.checkbox span {
+  //position: absolute;
+  color: black;
+}
+
+
+
+/* On mouse-over, add a grey background color */
+.modal-content:hover input~.rememberme {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.modal-content input:checked~.rememberme {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.rememberme:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.modal-content input:checked~.rememberme:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.modal-content .rememberme:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.modal-close {
+  position: absolute;
+  top: 100px;
+  left: auto;
+  background: top;
+  border: 0;
+  color: #4829b2;
+  right: 10px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  transform: rotate(90deg);
+  color: red;
 }

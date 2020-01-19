@@ -1,9 +1,0 @@
-.tabs {
-  font-size: 0.85rem;
-  white-space: nowrap;
-}
-
-.tabs li.is-active a {
-  border-bottom-color: #3273dc;
-  color: #3273dc;
-}

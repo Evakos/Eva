@@ -2,26 +2,22 @@
 window.onscroll = () => scrollFunction();
 
 function scrollFunction() {
-  if (document.body.scrollTop > 130 || document.documentElement.scrollTop > 130) {
+  if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
 
     document.querySelector('.nav-header').style.height = '65px';
 
-    document.querySelector('.nav-header').style.transition = 'height 1s';
+    //document.querySelector('.nav-header').style.position = 'fixed';
+
+    document.querySelector('.nav-header').style.transition = 'height .5s';
 
     document.querySelector('img.custom-logo').style.width = '25px';
 
     document.querySelector('img.custom-logo').style.transition = 'width .5s';
 
-    
-
-    
-
-
-   
   } else {
 
-    document.querySelector('.nav-header').style.height = '130px';
+    document.querySelector('.nav-header').style.height = '80px';
     document.querySelector('img.custom-logo').style.width = '50px';
-    
+
   }
 }

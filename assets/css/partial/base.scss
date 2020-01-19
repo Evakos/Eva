@@ -6,30 +6,33 @@
 *,
 *:after,
 *:before {
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 /* html element 62.5% font-size for REM use */
 html {
-    // font-size: 62.5%;
-    height:100%;
-    min-height:100%;
+  // font-size: 62.5%;
+  height: 100%;
+  min-height: 100%;
 }
 
 body {
-    font: 400 16px/1.4;
-    font-family: $eks_font--main;
-    color: $w;
-    margin: 0;
-    background-color: $w1;
-    height:100%;
-    min-height:100%;
-    word-break: break-word;
-    -webkit-word-break: break-word;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.4;
+  font-family: $eks_font--main;
+  color: $b;
+  margin: 0;
+  background-color: $w1;
+  height: 100%;
+  min-height: 100%;
+  word-break: break-word;
+  -webkit-word-break: break-word;
+  scroll-behavior: smooth;
 }
 
 
@@ -40,8 +43,28 @@ ul {
 
 
 
-pre, blockquote, form, figure, p, dl  {
-	margin-bottom: 1.3em;
+pre,
+blockquote,
+form,
+figure,
+p,
+dl {
+  margin-bottom: 1.3em;
+}
+
+
+//What is this?
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  text-transform: capitalize;
 }
 
 
@@ -52,31 +75,44 @@ img {
 }
 
 a {
- 
-  text-decoration:none;
+
+  text-decoration: none;
   cursor: pointer;
 }
 
 
 h1 {
-	display: block;
-	font-size: 5rem;
-	margin-top: 0.2rem;
-	margin-bottom: 0.2em;
-	font-weight: bold;
+  display: block;
+  font-size: 350%;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2em;
+  font-weight: bold;
 }
 
 h2 {
-	display: block;
-	font-size: 2rem;
-	margin-top: 0.2rem;
-	margin-bottom: 0.2em;
-	font-weight: bold;
+  display: block;
+  font-size: 300%;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2em;
+  font-weight: bold;
 }
+
 h3 {
-	display: block;
-	font-size: 1rem;
-	margin-top: 0.2rem;
-	margin-bottom: 0.2em;
-	font-weight: bold;
+  display: block;
+  font-size: 250%;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2em;
+  font-weight: bold;
+}
+
+h3 {
+  display: block;
+  font-size: 200%;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2em;
+  font-weight: bold;
+}
+
+p {
+  line-height: 2
 }

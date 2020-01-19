@@ -1,7 +1,7 @@
 /* ----------------------------------------------------------------------------
  * Main Stylesheet file.
  *
- * Source file for all SCSS files.
+ * Source file for all SCSS files. npm run css
  * ------------------------------------------------------------------------- */
 
 // — VENDORS.
@@ -9,18 +9,35 @@
 // Normalize.
 @import 'vendor/normalize';
 
-
-// — PARTIALS.
-
 // Variables.
 @import 'partial/variables';
+
 
 // Base.
 @import 'partial/base';
 
+
+
+
+// Woocommerce
+
+@import 'woocommerce/woocommerce-styles';
+
+//@import 'woocommerce/products';
+
+@import 'woocommerce/woocommerce-layout';
+
+@import 'woocommerce/woocommerce-custom';
+
+
+// — PARTIALS.
+
 @import 'partial/theme';
 
-@import 'partial/wc';
+
+
+
+
 
 
 

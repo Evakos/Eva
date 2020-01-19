@@ -1,49 +1,54 @@
 <?php get_header(); ?>
 
-<?php get_template_part( 'partials/nav', 'bar' ); ?>
+<div class='page-wrapper'>
 
-	<main role="main">
-		<!-- section DEFAULT PAGE.PHP-->
-		<section class="section">
-			
-			<div class="container">
-				
-				<h1 class="title">
-					<?php the_title(); ?>
-				</h1>
 
-		<?php if (have_posts()): while (have_posts()) : the_post(); ?>
+    <div class="section">
 
-			<!-- article -->
-			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+        <?php get_template_part( 'partials/nav', 'bar' ); ?>
 
-				<?php the_content(); ?>
 
-			
+        <!-- section DEFAULT PAGE.PHP-->
 
-			</article>
-			<!-- /article -->
 
-		<?php endwhile; ?>
+        <div class="container">
 
-		<?php else: ?>
 
-			<!-- article -->
-			<article>
+            <?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
-				<h2><?php _e( 'Sorry, nothing to display.', 'evakos' ); ?></h2>
+            <!-- article -->
+            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-			</article>
-			<!-- /article -->
 
-		<?php endif; ?>
-				
-				</div>
 
-		</section>
-		<!-- /section -->
-	</main>
+                <?php the_content(); ?>
+
+
+
+            </article>
+            <!-- /article -->
+
+            <?php endwhile; ?>
+
+            <?php else: ?>
+
+            <!-- article -->
+            <article>
+
+                <h2><?php _e( 'Sorry, nothing to display.', 'evakos' ); ?></h2>
+
+            </article>
+            <!-- /article -->
+
+            <?php endif; ?>
+
+        </div>
+
+        <!-- /section -->
+
+    </div>
+
+</div>
 
 
 <?php get_footer(); ?>
-

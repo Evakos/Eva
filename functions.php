@@ -18,6 +18,16 @@ function jk_dequeue_styles( $enqueue_styles ) {
 add_filter( 'woocommerce_enqueue_styles', '__return_false' );
 
 
+add_action( 'after_setup_theme', 'eks_account_mini_menu' );
+function eks_account_mini_menu() {
+	register_nav_menus( array(
+		'account_mini_menu' => 'Account Mini Menu',
+		
+	) );
+}
+
+
+
 include('customiser.php');
 
 require_once( __DIR__ . '/inc/login-validation.php');
@@ -36,10 +46,6 @@ function eks_add_woocommerce_support() {
 }
 
 add_action( 'after_setup_theme', 'eks_add_woocommerce_support' );
-
-
-
-
 
 add_filter( 'woocommerce_product_tabs', 'eks_remove_product_tabs', 98 );
  
@@ -83,23 +89,11 @@ function eks_excerpt_in_product_archives() {
 add_action( 'woocommerce_shop_loop_item_title', 'eks_excerpt_in_product_archives', 40 );
 
 
-
-
-
-
-
-
 /* Remove Price from Woocommerce */
 remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 );
 
 
-
-
-
-
 /* Remove Woocommerce Styles*/
-
-
 add_filter( 'woocommerce_enqueue_styles', 'eks_dequeue_styles' );
 function eks_dequeue_styles( $enqueue_styles ) {
 	unset( $enqueue_styles['woocommerce-general'] );	// Remove the gloss
@@ -110,8 +104,6 @@ function eks_dequeue_styles( $enqueue_styles ) {
 
   
 /*  Include Walker Class for Drop Downs*/
-
-
 require_once( __DIR__ . '/lib/classes/nav-walker.php');
 register_nav_menus( array(
     'primary' => __( 'Primary Menu', 'menuname' ),
@@ -125,11 +117,7 @@ remove_action( 'woocommerce_before_shop_loop' , 'woocommerce_catalog_ordering', 
 // Remove the result count from WooCommerce
 remove_action( 'woocommerce_before_shop_loop' , 'woocommerce_result_count', 20 );
 
-
-
 /*  Include SVG Support */
-
-
 function add_file_types_to_uploads($file_types){
   $new_filetypes = array();
   $new_filetypes['svg'] = 'image/svg+xml';
@@ -137,21 +125,6 @@ function add_file_types_to_uploads($file_types){
   return $file_types;
   }
   add_action('upload_mimes', 'add_file_types_to_uploads');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* add_action('wp_head','eks_login_state');
 function eks_login_state() {
@@ -165,27 +138,8 @@ function eks_login_state() {
     echo $output;
 } */
 
-
-
-
-
 function eks_css_scripts() {
 
- 
-  
-  // wp_enqueue_style( 'bulma', get_template_directory_uri() . '/css/bulma.css', array());
- 
-  // wp_enqueue_style( 'stripe', get_template_directory_uri() . '/css/stripe.css', array());
-  // wp_enqueue_style( 'cust-wc', get_template_directory_uri() . '/css/cust-wc.css', array());
-  // wp_enqueue_style( 'account-wc', get_template_directory_uri() . '/css/account.css', array());
-  // wp_enqueue_style( 'tabs', get_template_directory_uri() . '/css/tabs.css', array());
-  // wp_enqueue_style( 'radio', get_template_directory_uri() . '/css/radio.css', array());
-  // wp_enqueue_style( 'bulma-tabs', get_template_directory_uri() . '/css/bulma-tabs.css', array());
-  // wp_enqueue_style( 'pulse', get_template_directory_uri() . '/css/pulse.css', array());
-  // wp_enqueue_style( 'steps', get_template_directory_uri() . '/css/steps.css', array());
-  // wp_enqueue_style( 'cust-tabs', get_template_directory_uri() . '/css/cust-tabs.css', array());
-  // wp_enqueue_style( 'bulma-admin', get_template_directory_uri() . '/css/bulma-admin.css', array());
-  // wp_enqueue_style( 'bulma-pricingtable', get_template_directory_uri() . '/css/bulma-pricingtable.min.css');
   wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css', array());
 }
 add_action( 'wp_enqueue_scripts', 'eks_css_scripts');
@@ -227,6 +181,14 @@ function eks_js_scripts() {
   );
 
   wp_enqueue_script(
+    'eks-drop-down',                                 //slug
+    get_template_directory_uri() . '/js/drop-down.js', //path
+    false,                                      //dependencies
+    false,                                                //version
+    true                                                  //footer
+  );
+
+  wp_enqueue_script(
     'eks-modal-register',                                 //slug
     get_template_directory_uri() . '/js/eks-modal-register.js', //path
     false,                                      //dependencies
@@ -246,30 +208,22 @@ function eks_js_scripts() {
 add_action('wp_enqueue_scripts', 'eks_js_scripts');
 
 
-
-
-
-
-
-  
-
 function eks_add_google_fonts() {
  
-wp_enqueue_style( 'eks-google-fonts', 'https://fonts.googleapis.com/css?family=Josefin+Sans|Open+Sans|Roboto', false ); 
-
-
+wp_enqueue_style( 'eks-google-fonts', 'https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap', false ); 
 
 }
 add_action( 'wp_enqueue_scripts', 'eks_add_google_fonts' );
 
-function eks_add_typekit_fonts() {
+
+// function eks_add_typekit_fonts() {
  
-  wp_enqueue_style( 'eks-typekit-fonts', 'https://use.typekit.net/pmq0acn.css', false ); 
+//   wp_enqueue_style( 'eks-typekit-fonts', 'https://use.typekit.net/pmq0acn.css', false ); 
   
   
   
-  }
-  add_action( 'wp_enqueue_scripts', 'eks_add_typekit_fonts' );
+//   }
+//   add_action( 'wp_enqueue_scripts', 'eks_add_typekit_fonts' );
 
 
   function eks_get_orders_count_from_status( $status ){
@@ -372,4 +326,3 @@ function custom_action() {
 
 add_action( 'wp_ajax_custom_action', 'custom_action' );
 add_action( 'wp_ajax_nopriv_custom_action', 'custom_action' );
-

@@ -1,0 +1,332 @@
+//Genral Styles
+
+// .woocommerce {
+
+//   color: black;
+//   padding: 3rem 2rem;
+//   margin-top: 2rem;
+// }
+
+.woocommerce h2 {
+  /* display: block; */
+  font-size: 2rem;
+  margin-bottom: 1em;
+  font-weight: bold;
+  color: black;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 2rem;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+}
+
+// .woocommerce h2::before {
+//   font-family: 'Font Awesome 5 Free';
+//   font-weight: 900;
+//   content: '\f07a';
+//   display: inline-block;
+//   font-size: 12px;
+//   background-color: #47B29E;
+//   padding: 1rem;
+//   border-radius: 99px;
+//   color: white;
+//   margin-right: .5rem;
+// }
+
+//Tables
+thead {
+  background-color: $w1;
+}
+
+//Buttons
+
+.woocommerce a.button.alt,
+.woocommerce button.button.alt,
+.woocommerce input.button.alt,
+.woocommerce #respond input#submit.alt {
+  background-color: $g;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button,
+.woocommerce #respond input#submit {
+  font-size: 100%;
+  margin: 0;
+  line-height: 1;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  overflow: visible;
+  padding: 0.6rem 1.5rem;
+  font-weight: 300;
+  border-radius: 99px;
+  left: auto;
+  color: #515151;
+  background-color: #ebe9eb;
+  border: 0;
+  display: inline-block;
+  background-image: none;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+.woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
+.woocommerce-checkout .wc-proceed-to-checkout a.checkout-button,
+#add_payment_method .wc-proceed-to-checkout a.checkout-button {
+  display: block;
+  text-align: center;
+  margin-bottom: 1em;
+  font-size: 1.25em;
+  padding: 1em;
+  text-transform: capitalize;
+}
+
+// Icons (Using Font Awesome)
+
+.woocommerce-message::before,
+.woocommerce-error::before,
+.woocommerce-info::before {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  content: '\f058';
+  display: inline-block;
+  position: absolute;
+  top: 1em;
+  left: 1.5em;
+}
+
+// Messages
+
+.woocommerce-message,
+.woocommerce-error,
+.woocommerce-info {
+  padding: 1em 2em 1em 3.5em;
+  margin: 0 0 2em;
+  position: relative;
+  background-color: #f7f6f7;
+  color: #515151;
+  border: 0;
+  list-style: none outside;
+  *zoom: 1;
+  width: auto;
+  word-wrap: break-word;
+}
+
+//Cart Styles
+
+.woocommerce-cart table.cart th,
+.woocommerce-cart table.cart td,
+.woocommerce-checkout table.cart th,
+.woocommerce-checkout table.cart td,
+#add_payment_method table.cart th,
+#add_payment_method table.cart td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.woocommerce a.remove {
+  display: inline-block;
+  font-size: 1.5em;
+  height: 1em;
+  width: 1em;
+  text-align: center;
+  line-height: 1;
+  border-radius: 100%;
+  color: black !important;
+  text-decoration: none;
+  font-weight: 300;
+  border: 0;
+}
+
+.coupon {
+  background-color: #fafafa;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.coupon label {
+  display: none;
+}
+
+input#coupon_code.input-text {
+  padding: 0.6rem 1.5rem;
+  border: 0;
+  border-radius: 99px;
+  margin-right: 1rem;
+}
+
+.woocommerce-cart-form__contents tbody tr td.actions {
+  padding-right: 4.5rem;
+}
+
+
+// Checkout Page
+
+.woocommerce form .form-row input.input-text,
+.woocommerce form .form-row textarea {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  outline: 0;
+  line-height: normal;
+  padding: .5rem;
+}
+
+.select2-container--default .select2-selection--single {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 100%;
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  width: 20px;
+}
+
+.select2-container .select2-selection--single {
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  height: auto;
+  margin: 0 0 -4px;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+  display: block;
+  padding-left: 8px;
+  padding-right: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: .5rem;
+}
+
+
+
+//Dashboard
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 50px 0px 0px 50px;
+  width: 61%;
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.woocommerce-MyAccount-content {
+  float: none;
+}
+
+.woocommerce-account .woocommerce {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.woocommerce-account .container {
+  width: 100%;
+  margin: auto;
+  margin-top: 130px;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation {
+  float: left;
+  width: 15%;
+  background-color: $w;
+  height: 100vh;
+  //box-shadow: $s1;
+}
+
+.woocommerce-MyAccount-navigation ul {
+  padding: 0;
+  margin: 0;
+
+}
+
+.woocommerce-MyAccount-navigation ul li {
+  padding: 2rem 0 2rem 2rem;
+  transition: 0.3s;
+  border-bottom: 1px solid rgba($color: #000000, $alpha: .05);
+}
+
+.woocommerce-MyAccount-navigation ul li:hover {
+  background-color: rgba($color: #000000, $alpha: .05);
+  cursor: pointer;
+
+}
+
+.woocommerce-MyAccount-navigation ul li a {
+  color: white;
+
+}
+
+.woocommerce-account .card {
+
+  background-color: grey;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+//Shop Page
+
+.meta-grid {
+  display: grid;
+  grid-column-gap: 50px;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+
+}
+
+.meta-grid>div {
+
+  padding: 5px;
+
+}
+
+//Product Archive Page
+
+.woocommerce ul.products li.product,
+.woocommerce-page ul.products li.product {
+  float: left;
+  margin: 1rem;
+  padding: 0;
+  position: relative;
+  width: 24%;
+  margin-left: 0;
+}
+
+
+
+//Product Page
+
+.woocommerce .product {
+  margin-bottom: 0;
+  position: relative;
+  background-color: rgba($color: #fff, $alpha: 1);
+  padding: 3rem;
+  box-shadow: $s1;
+  color: $b;
+
+}

@@ -1,30 +1,35 @@
 <?php get_header(); ?>
 
-<?php get_template_part( 'partials/nav', 'bar' ); ?>
 
-	<main role="main">
-		<!-- section DEFAULT PAGE.PHP-->
-		<section class="section">
-			
-			<div class="container">
-				
-			<?php woocommerce_content(); ?>
-				
-				</div>
-
-		</section>
-		<!-- /section -->
-	</main>
+<div class='page-wrapper'>
 
 
-<?php get_footer(); ?>
+    <div class="section">
+
+        <?php get_template_part( 'partials/nav', 'bar' ); ?>
+
+
+        <!-- section DEFAULT WOOCOMMERCE.PHP-->
+
+
+        <div class="container">
+
+            <?php woocommerce_content(); ?>
+
+        </div>
+
+        </section>
+        <!-- /section -->
+        </main>
+
+
+        <?php get_footer(); ?>
 
 
 
-		</section>
-		<!-- /section -->
-	</main>
+        </section>
+        <!-- /section -->
+        </main>
 
 
-<?php get_footer(); ?>
-
+        <?php get_footer(); ?>

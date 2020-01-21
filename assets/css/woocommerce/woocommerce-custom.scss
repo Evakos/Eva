@@ -1,11 +1,11 @@
-//Genral Styles
+//General Styles
 
-// .woocommerce {
+.woocommerce {
+  margin: 0 auto;
+  width: 1380px;
+  padding-top: 7rem;
+}
 
-//   color: black;
-//   padding: 3rem 2rem;
-//   margin-top: 2rem;
-// }
 
 .woocommerce h2 {
   /* display: block; */
@@ -20,18 +20,7 @@
   align-items: center;
 }
 
-// .woocommerce h2::before {
-//   font-family: 'Font Awesome 5 Free';
-//   font-weight: 900;
-//   content: '\f07a';
-//   display: inline-block;
-//   font-size: 12px;
-//   background-color: #47B29E;
-//   padding: 1rem;
-//   border-radius: 99px;
-//   color: white;
-//   margin-right: .5rem;
-// }
+
 
 //Tables
 thead {
@@ -217,116 +206,263 @@ input#coupon_code.input-text {
 
 //Dashboard
 
+.account-user .image img {
+  border-radius: 99px;
+}
 
-.grid-container {
+
+.grid-container-dashboard {
   display: grid;
   grid-template-columns: auto auto auto;
-  padding: 50px 0px 0px 50px;
-  width: 61%;
-}
-
-.grid-item {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  font-size: 30px;
-  text-align: center;
-}
-
-.woocommerce-MyAccount-content {
-  float: none;
-}
-
-.woocommerce-account .woocommerce {
-  width: 100%;
-  padding: 0;
-  margin: 0;
-}
-
-.woocommerce-account .container {
-  width: 100%;
-  margin: auto;
-  margin-top: 130px;
-}
-
-.woocommerce-account .woocommerce-MyAccount-navigation {
-  float: left;
-  width: 15%;
-  background-color: $w;
-  height: 100vh;
-  //box-shadow: $s1;
-}
-
-.woocommerce-MyAccount-navigation ul {
-  padding: 0;
-  margin: 0;
-
-}
-
-.woocommerce-MyAccount-navigation ul li {
-  padding: 2rem 0 2rem 2rem;
-  transition: 0.3s;
-  border-bottom: 1px solid rgba($color: #000000, $alpha: .05);
-}
-
-.woocommerce-MyAccount-navigation ul li:hover {
-  background-color: rgba($color: #000000, $alpha: .05);
-  cursor: pointer;
-
-}
-
-.woocommerce-MyAccount-navigation ul li a {
-  color: white;
-
-}
-
-.woocommerce-account .card {
-
-  background-color: grey;
-  width: 100%;
-  height: 100%;
-}
-
-
-
-//Shop Page
-
-.meta-grid {
-  display: grid;
-  grid-column-gap: 50px;
-  grid-template-columns: auto auto auto;
+  grid-gap: 10px;
   padding: 10px;
-
 }
 
-.meta-grid>div {
-
-  padding: 5px;
-
+.grid-container-dashboard>div {
+  background-color: $w1;
+  padding: 1em;
 }
 
-//Product Archive Page
+.item1 {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
 
-.woocommerce ul.products li.product,
-.woocommerce-page ul.products li.product {
+.account-navigation {
+  display: flex;
   float: left;
-  margin: 1rem;
+}
+
+.account-navigation ul>li+li {
+  border-top: 1px solid rgba(255, 255, 255, 1);
+
+}
+
+.account-navigation ul {
   padding: 0;
-  position: relative;
-  width: 24%;
-  margin-left: 0;
+  margin-top: 9px;
+}
+
+.account-navigation ul li a {
+  width: 300px;
+  display: flex;
+  padding: 2rem 0;
+  align-items: center;
+  color: black;
+  -webkit-transition: ease .6s;
+  -moz-transition: ease .6s;
+  -o-transition: ease .6s;
+  transition: ease .6s;
+  background-color: #fafafa;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.account-navigation ul li a:hover {
+  background-color: rgb(242, 242, 242);
+}
+
+.account-user {
+  display: flex;
+  padding: 1em;
+  align-items: center;
 }
 
 
+.account-navigation .nav>li>a {
+  padding: 1.8em 0;
+  text-transform: capitalize;
+}
 
-//Product Page
 
-.woocommerce .product {
-  margin-bottom: 0;
-  position: relative;
-  background-color: rgba($color: #fff, $alpha: 1);
-  padding: 3rem;
-  box-shadow: $s1;
-  color: $b;
+.woocommerce-MyAccount-navigation-link--dashboard a:before {
+  content: "";
+  background: url("img/icons/user.svg") no-repeat;
+  color: white;
+  display: block;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+  background-size: 40%;
+  background-color: rgba(255, 255, 255, .7);
+  border-radius: 99px;
+  margin-right: .5em;
+  margin-left: .7em;
+}
 
+.woocommerce-MyAccount-navigation-link--orders a:before {
+  content: "";
+  background: url("img/icons/package.svg") no-repeat;
+  color: white;
+  display: block;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+  background-size: 40%;
+  background-color: rgba(255, 255, 255, .7);
+  border-radius: 99px;
+  margin-right: .5em;
+  margin-left: .7em;
+}
+
+.woocommerce-MyAccount-navigation-link--subscriptions a:before {
+  content: "";
+  background: url("img/icons/refresh-cw.svg") no-repeat;
+  color: white;
+  display: block;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+  background-size: 40%;
+  background-color: rgba(255, 255, 255, .7);
+  border-radius: 99px;
+  margin-right: .5em;
+  margin-left: .7em;
+}
+
+.woocommerce-MyAccount-navigation-link--support-conversations a:before {
+  content: "";
+  background: url("img/icons/message-square.svg") no-repeat;
+  color: white;
+  display: block;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+  background-size: 40%;
+  background-color: rgba(255, 255, 255, .7);
+  border-radius: 99px;
+  margin-right: .5em;
+  margin-left: .7em;
+}
+
+.woocommerce-MyAccount-navigation-link--downloads a:before {
+  content: "";
+  background: url("img/icons/download.svg") no-repeat;
+  color: white;
+  display: block;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+  background-size: 40%;
+  background-color: rgba(255, 255, 255, .7);
+  border-radius: 99px;
+  margin-right: .5em;
+  margin-left: .7em;
+}
+
+.woocommerce-MyAccount-navigation-link--edit-address a:before {
+  content: "";
+  background: url("img/icons//home.svg") no-repeat;
+  color: white;
+  display: block;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+  background-size: 40%;
+  background-color: rgba(255, 255, 255, .7);
+  border-radius: 99px;
+  margin-right: .5em;
+  margin-left: .7em;
+}
+
+
+.woocommerce-MyAccount-navigation-link--payment-methods:before {
+  content: "";
+  background: url("img/icons/credit-card.svg") no-repeat;
+  color: white;
+  display: block;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+  background-size: 40%;
+  background-color: rgba(255, 255, 255, .7);
+  border-radius: 99px;
+  margin-right: .5em;
+  margin-left: .7em;
+}
+
+.woocommerce-MyAccount-navigation-link--edit-account a:before {
+  content: "";
+  background: url("img/icons/edit.svg") no-repeat;
+  color: white;
+  display: block;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+  background-size: 40%;
+  background-color: rgba(255, 255, 255, .7);
+  border-radius: 99px;
+  margin-right: .5em;
+  margin-left: .7em;
+}
+
+.woocommerce-MyAccount-navigation-link--customer-logout a:before {
+  content: "";
+  background: url("img/icons/log-out.svg") no-repeat;
+  color: white;
+  display: block;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+  background-size: 40%;
+  background-color: rgba(255, 255, 255, .7);
+  border-radius: 99px;
+  margin-right: .5em;
+  margin-left: .7em;
+}
+
+.account-user-info {
+  display: flex
+}
+
+.nav-line>li>a::before {
+  background-color: white
+}
+
+.account-user {
+  display: flex;
+  padding: 1em;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.grid-container>div {
+  background-color: rgba(0, 0, 0, 0.03);
+  padding: 1em;
+}
+
+
+.account-meta-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.account-meta {
+  border-left: 1px solid white;
+  padding-left: 1em
+}
+
+.account-meta-title h4 {
+  border-bottom: 1px solid rgba(0, 0, 0, .05);
+
+}
+
+.account-user-orders-count {
+  text-align: center;
+  font-size: 300%
+}
+
+.account-account-meta ul li span {
+  font-size: 80%
+}
+
+.account-count {
+  font-weight: bold;
+  font-size: 200%
+}
+
+.customer-number {
+  font-weight: normal
 }

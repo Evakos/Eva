@@ -6,6 +6,8 @@
         <div class="col">
             <p>
 
+                Evakos 2002
+
                 <a class="icon" href="https://github.com/evakos">
                     <i class="fab fa-github-square"></i> Eva Theme v1.0
                 </a>

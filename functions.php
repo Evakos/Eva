@@ -1,5 +1,36 @@
 <?php
 
+
+//Get Subscriptions Count from Database to Display in Dashboard
+      
+function get_user_active_subscriptions_count( $product_id, $user_id = null ) {
+global $wpdb;
+
+// if the user_id is not set in function argument we get the current user ID
+if( null == $user_id )
+  $user_id = get_current_user_id();
+
+// return the active subscriptions for a define user and a defined product ID
+return $wpdb->get_var("
+  SELECT COUNT(p.ID)
+  FROM {$wpdb->prefix}posts as p
+  LEFT JOIN {$wpdb->prefix}posts AS p2 ON p.post_parent = p2.ID
+  LEFT JOIN {$wpdb->prefix}postmeta AS pm ON p2.ID = pm.post_id
+  LEFT JOIN {$wpdb->prefix}woocommerce_order_items AS woi ON pm.post_id = woi.order_id
+  LEFT JOIN {$wpdb->prefix}woocommerce_order_itemmeta AS woim ON woi.order_item_id = woim.order_item_id
+  WHERE p.post_type LIKE 'shop_subscription' AND p.post_status LIKE 'wc-active'
+  AND p2.post_type LIKE 'shop_order' AND woi.order_item_type LIKE 'line_item'
+  AND pm.meta_key LIKE '_customer_user' AND pm.meta_value = '$user_id'
+  AND woim.meta_key = '_product_id'
+  AND woim.meta_value = '$product_id'
+");
+}
+
+
+
+
+
+
 add_theme_support( 'woocommerce' );
 
 /**
@@ -18,19 +49,10 @@ function jk_dequeue_styles( $enqueue_styles ) {
 add_filter( 'woocommerce_enqueue_styles', '__return_false' );
 
 
-add_action( 'after_setup_theme', 'eks_account_mini_menu' );
-function eks_account_mini_menu() {
-	register_nav_menus( array(
-		'account_mini_menu' => 'Account Mini Menu',
-		
-	) );
-}
-
-
 
 include('customiser.php');
 
-require_once( __DIR__ . '/inc/login-validation.php');
+//require_once( __DIR__ . '/inc/login-validation.php');
 
 
 remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
@@ -97,17 +119,19 @@ remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_l
 add_filter( 'woocommerce_enqueue_styles', 'eks_dequeue_styles' );
 function eks_dequeue_styles( $enqueue_styles ) {
 	unset( $enqueue_styles['woocommerce-general'] );	// Remove the gloss
-	//unset( $enqueue_styles['woocommerce-layout'] );		// Remove the layout
-	//unset( $enqueue_styles['woocommerce-smallscreen'] );	// Remove the smallscreen optimisation
+	unset( $enqueue_styles['woocommerce-layout'] );		// Remove the layout
+	unset( $enqueue_styles['woocommerce-smallscreen'] );	// Remove the smallscreen optimisation
 	return $enqueue_styles;
 }
 
   
 /*  Include Walker Class for Drop Downs*/
 require_once( __DIR__ . '/lib/classes/nav-walker.php');
+
 register_nav_menus( array(
     'primary' => __( 'Primary Menu', 'menuname' ),
     'account' => __( 'Account Menu', 'menuname2' ),
+    'account_mini_menu' => __( 'Account Mini Menu', 'menuname3' ),
 ) );
 
 
@@ -326,3 +350,78 @@ function custom_action() {
 
 add_action( 'wp_ajax_custom_action', 'custom_action' );
 add_action( 'wp_ajax_nopriv_custom_action', 'custom_action' );
+
+
+
+
+//Added 21/2
+
+
+function eks_bypass_logout_confirmation() {
+    global $wp;
+ 
+    if ( isset( $wp->query_vars['customer-logout'] ) ) {
+        wp_redirect( str_replace( '&amp;', '&', wp_logout_url( wc_get_page_permalink( '/' ) ) ) );
+        exit;
+    }
+}
+ 
+add_action( 'template_redirect', 'eks_bypass_logout_confirmation' );
+
+
+
+
+//Reposition Coupon
+
+remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
+
+
+add_action( 'woocommerce_review_order_before_payment', 'eks_coupon_form_below_proceed_checkout', 25 );
+ 
+function eks_coupon_form_below_proceed_checkout() {
+   ?>
+<form class="woocommerce-coupon-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
+    <?php if ( wc_coupons_enabled() ) { ?>
+    <div class="coupon">
+        <p><?php esc_html_e( 'If you have a coupon code, please apply it here.', 'woocommerce' ); ?></p>
+        <input type="text" name="coupon_code" class="input-text" id="coupon_code" value=""
+            placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" />
+        <button type="submit" class="button" name="apply_coupon"
+            value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?></button>
+    </div>
+    <?php } ?>
+</form>
+<?php
+}
+
+
+
+add_action('wp_dashboard_setup', 'eks_dashboard_widgets');
+  
+function eks_dashboard_widgets() {
+global $wp_meta_boxes;
+ 
+wp_add_dashboard_widget('custom_help_widget', 'Evakos Hosting & Managed Support', 'eks_dashboard_help');
+}
+ 
+function eks_dashboard_help() {
+echo '<p>Evakos Hosting & Managed Support. Need help? Contact the developer <a href="mailto:support@evakos.io">here</a>. Visit <a href="https://www.evakos.io" target="_blank">Evakos</a></p>';
+}
+
+
+ add_filter('woocommerce_add_to_cart_redirect','straight_to_checkout');
+
+  function straight_to_checkout() {
+   $checkouturl = WC()->cart->get_checkout_url();
+   return $checkouturl;
+}
+
+/**
+ * Changes the redirect URL for the Return To Shop button in the cart.
+ *
+ * @return string
+ */
+function wc_empty_cart_redirect_url() {
+	return 'https://evakos.io';
+}
+add_filter( 'woocommerce_return_to_shop_redirect', 'wc_empty_cart_redirect_url' );

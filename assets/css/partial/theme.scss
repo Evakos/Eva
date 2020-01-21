@@ -28,86 +28,53 @@ Use it to make something cool, have fun, and share what you've learned with othe
   grid-area: hero;
 }
 
-.hero {
-  grid-area: hero;
-
-}
-
 .wrapper>main {
   grid-area: main;
-
 }
 
 .wrapper>footer {
   grid-area: footer;
-
 }
 
-.page-wrapper {
-  display: grid;
-  width: 100%;
-  height: 100%;
-  grid-template-areas: 'section''footer';
-  grid-template-rows: 100vh 1fr;
-  grid-template-columns: 1fr;
-}
-
-.page-wrapper>section {
-  grid-area: section;
-}
-
-.page-wrapper>footer {
-  grid-area: footer;
-}
 
 /* Containers */
 
 .row {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   width: 1280px;
-  margin: auto;
-  margin-top: 150px;
+  margin: 0 auto;
+  align-content: center;
+  padding: 3rem 0rem;
 }
 
 .col {
-  flex: 50%;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
 }
 
+/* Helpers */
 
-/* Hero */
+.spacer {
+  margin: 2rem 0;
+}
 
-.hero {
-  background: url("img/hero.svg") no-repeat;
+.alt-title {
+  font-size: 1.5rem;
+}
+
+/* Banner */
+
+.banner {
+  background: url('img/hero.svg') no-repeat;
   background-position: 50% bottom;
   background-size: cover;
+  height: 600px;
+  display: flex;
 }
-
-// .hero::after {
-//   width: 60vw;
-//   height: 60vw;
-//   bottom: -30vw;
-//   left: 80vw;
-// }
-
-// .hero::before,
-// .hero::after {
-//   -webkit-transform: rotate(-45deg);
-//   -moz-transform: rotate(-45deg);
-//   transform: rotate(-45deg);
-//   position: absolute;
-//   content: '';
-//   display: block;
-//   background: rgba(255, 255, 255, 0.05);
-//   border-radius: 10rem;
-// }
-
-// .hero::before {
-//   width: 80vw;
-//   height: 80vw;
-//   bottom: -40vw;
-//   left: 25vw;
-// }
 
 /* Naigation */
 
@@ -134,12 +101,6 @@ Use it to make something cool, have fun, and share what you've learned with othe
   align-items: center;
 }
 
-// .text-box {
-//   position: relative;
-//   top: 30%;
-
-// }
-
 .box {
   padding: 1rem 3rem;
   margin-top: 10%;
@@ -151,7 +112,8 @@ Use it to make something cool, have fun, and share what you've learned with othe
 }
 
 .nav {
-  margin-right: 1rem
+  margin-right: 1rem;
+  z-index: 999;
 }
 
 .primary-menu {
@@ -170,13 +132,12 @@ Use it to make something cool, have fun, and share what you've learned with othe
   color: white;
   text-decoration: none;
   border-right: 1px solid rgba(0, 0, 0, 0.15);
-  font-size: .9rem;
+  font-size: 0.9rem;
   font-weight: 700;
 }
 
 .primary-menu li {
   padding: 1rem 0.5rem;
-
 }
 
 .primary-menu li ul li {
@@ -241,11 +202,6 @@ Use it to make something cool, have fun, and share what you've learned with othe
   padding-left: 0.5rem;
 }
 
-
-
-
-
-
 .primary-menu li>a:only-child:after {
   content: '';
 }
@@ -254,25 +210,24 @@ Use it to make something cool, have fun, and share what you've learned with othe
   background-color: var(--third-color);
 }
 
-.account-dropdown span {
-  content: "";
-  background: url("img/icons/user.svg") no-repeat;
+.account-dropdown:before {
+  content: '';
+  background: url('img/icons/user.svg') no-repeat;
   color: white;
   display: block;
   background-position: center;
   width: 30px;
   height: 30px;
   background-size: 40%;
-  background-color: rgba(255, 255, 255, .75);
+  background-color: rgba(255, 255, 255, 0.75);
   border-radius: 99px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.6s;
+  z-index: 999;
 }
 
-.account-dropdown span:hover {
-
+.account-dropdown:before:hover {
   background-color: rgba(255, 255, 255, 1);
-
 }
 
 .account-dropdown {
@@ -281,27 +236,77 @@ Use it to make something cool, have fun, and share what you've learned with othe
 }
 
 .account-dropdown-content {
-  display: none;
   position: absolute;
   background-color: black;
   min-width: 280px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  padding: 12px 16px;
   z-index: 1;
-  left: -15rem;
-  top: 3.5rem;
+  left: -15.5rem;
+  top: 0;
+  padding: 3rem 0rem 1rem;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.2s linear;
+  justify-content: center;
 }
 
 .account-dropdown-content a {
-
   color: white;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+ul.account-dropdown-content li {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+ul.account-dropdown-content li:first-child:before {
+  content: '';
+  background: url('img/icons/user-wht.svg') no-repeat;
+  display: block;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+  background-size: 40%;
+  background-color: transparent;
+}
+
+ul.account-dropdown-content li:nth-child(2):before {
+  content: '';
+  background: url('img/icons/log-out-wht.svg') no-repeat;
+  display: block;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+  background-size: 40%;
+  background-color: transparent;
 }
 
 .account-dropdown:hover .account-dropdown-content {
   display: flex;
+  visibility: visible;
+  opacity: 1;
 }
 
+a.account-login {
+  content: '';
+  background: url('img/icons/log-in.svg') no-repeat;
+  color: white;
+  display: block;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+  background-size: 40%;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 99px;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
+a.account-login:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
 
 /* Sevices Section */
 
@@ -313,7 +318,6 @@ Use it to make something cool, have fun, and share what you've learned with othe
 }
 
 .services-grid-container>div {
-
   padding: 1em;
 }
 
@@ -327,51 +331,105 @@ Use it to make something cool, have fun, and share what you've learned with othe
 .services-item-2,
 .services-item-3,
 .services-item-4 {
-
   background-color: $s;
   text-align: center;
-
 }
 
 .services-item-2 {
   margin-left: 1rem;
 }
 
+//Prices Section
+
+.price-section {
+  background-color: $s;
+}
+
 .prices-grid-container {
   display: grid;
   grid-template-columns: 350px 350px 350px;
-  grid-gap: 10px;
+  grid-gap: 30px;
   padding: 10px;
   justify-content: center;
 }
 
 .prices-grid-container>div {
-  background-color: #e7fcfb;
+  background-color: $s;
   padding: 2rem;
   text-align: center;
+  border: 1px solid #fff;
 }
 
-// .prices-item-1 {
-//   grid-column-start: 1;
-//   grid-column-end: 2;
-//   background-color: transparent;
-//   border-right: 1px solid #1e1e1e;
-// }
+.prices-grid-container>div:hover {
+  box-shadow: inset 1px 2px 10px rgba(0, 0, 0, 0.02);
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.01);
+}
 
-// .prices-item-2,
-// .prices-item-3,
-// .prices-item-4 {
+ul.price-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
 
-//   background-color: $s;
+.price-list li {
+  margin: 1rem;
+}
 
-// }
+.price-img-design {
+  content: '';
+  background: url('img/icons/monitor.svg') no-repeat;
+  color: white;
+  display: block;
+  background-position: center;
+  width: 100px;
+  height: 100px;
+  background-size: 30%;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 99px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+}
 
+.price-img-support {
+  content: '';
+  background: url('img/icons/message-square.svg') no-repeat;
+  color: white;
+  display: block;
+  background-position: center;
+  width: 100px;
+  height: 100px;
+  background-size: 30%;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 99px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+}
 
+.price-img-fixes {
+  content: '';
+  background: url('img/icons/tool.svg') no-repeat;
+  color: white;
+  display: block;
+  background-position: center;
+  width: 100px;
+  height: 100px;
+  background-size: 30%;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 99px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+}
 
-
-
-
-
+.fixes {
+  background: url('img/icons/design.svg') no-repeat;
+}
 
 
 
@@ -386,7 +444,7 @@ img.custom-logo {
 
 .button {
   display: inline-block;
-  background-color: #e7fcfb;
+  background-color: $s;
   color: black;
   padding: 1rem 3rem;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
@@ -396,14 +454,30 @@ img.custom-logo {
 }
 
 .button:hover {
-  background-color: $s;
-  color: $w;
+  background-color: #e0ebed;
+  color: $b;
+  cursor: pointer;
+}
 
+.alt {
+  background-color: $w;
+  color: $b;
+}
+
+.alt:hover {
+  background-color: $s;
+  color: $b;
 }
 
 
+/*Footer*/
+
 .footer {
-  background-color: black
+  background-color: black;
+}
+
+.footer>.row {
+  padding: 0;
 }
 
 .footer a {
@@ -414,7 +488,6 @@ img.custom-logo {
 .footer a:hover {
   color: $w;
 }
-
 
 /*Account Menu*/
 
@@ -444,11 +517,24 @@ img.custom-logo {
   /* display: block; */
 }
 
+/*Login Forms*/
+
+.auth-msg {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.auth-msg i.fas {
+  color: black;
+  font-size: 0.9rem;
+  margin-right: 5px;
+}
 
 /*Modals*/
 
 .modal {
-  display: none
+  display: none;
 }
 
 .modal-display {
@@ -517,9 +603,9 @@ img.custom-logo {
 }
 
 .modal-content .eks-error:before {
-  font-family: "Font Awesome 5 Free";
+  font-family: 'Font Awesome 5 Free';
   font-weight: 900;
-  content: "\f06a";
+  content: '\f06a';
   padding-right: 0.4rem;
 }
 
@@ -528,24 +614,23 @@ img.custom-logo {
 }
 
 .modal-content .eks-error:before {
-  font-family: "Font Awesome 5 Free";
+  font-family: 'Font Awesome 5 Free';
   font-weight: 900;
-  content: "\f06a";
-  padding-right: 0.4rem;
-}
-
-
-.modal-content #auth-msg>.eks-success:before {
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  content: "\f058";
+  content: '\f06a';
   padding-right: 0.4rem;
 }
 
 .modal-content #auth-msg>.eks-success:before {
-  font-family: "Font Awesome 5 Free";
+  font-family: 'Font Awesome 5 Free';
   font-weight: 900;
-  content: "\f058";
+  content: '\f058';
+  padding-right: 0.4rem;
+}
+
+.modal-content #auth-msg>.eks-success:before {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  content: '\f058';
   padding-right: 0.4rem;
 }
 
@@ -556,17 +641,11 @@ img.custom-logo {
 }
 
 .modal-content-meta {
-
   text-align: center;
-
-
 }
 
 .modal-content-meta a {
-
   color: white;
-
-
 }
 
 .modal-content .title:not(.is-spaced)+.subtitle {
@@ -590,7 +669,7 @@ img.custom-logo {
 }
 
 #modal_login_form {
-  width: 100%
+  width: 100%;
 }
 
 .btn-login {
@@ -629,8 +708,6 @@ label.checkbox span {
   color: black;
 }
 
-
-
 /* On mouse-over, add a grey background color */
 .modal-content:hover input~.rememberme {
   background-color: #ccc;
@@ -638,12 +715,12 @@ label.checkbox span {
 
 /* When the checkbox is checked, add a blue background */
 .modal-content input:checked~.rememberme {
-  background-color: #2196F3;
+  background-color: #2196f3;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
 .rememberme:after {
-  content: "";
+  content: '';
   position: absolute;
   display: none;
 }

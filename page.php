@@ -1,54 +1,37 @@
 <?php get_header(); ?>
 
-<div class='page-wrapper'>
 
 
-    <div class="section">
+<?php get_template_part( 'partials/nav', 'bar' ); ?>
 
-        <?php get_template_part( 'partials/nav', 'bar' ); ?>
-
-
-        <!-- section DEFAULT PAGE.PHP-->
-
-
-        <div class="container">
-
-
-            <?php if (have_posts()): while (have_posts()) : the_post(); ?>
-
-            <!-- article -->
-            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<!-- section DEFAULT PAGE.PHP-->
 
 
 
-                <?php the_content(); ?>
+<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
+<!-- article -->
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
+    <?php the_content(); ?>
 
-            </article>
-            <!-- /article -->
+</article>
+<!-- /article -->
 
-            <?php endwhile; ?>
+<?php endwhile; ?>
 
-            <?php else: ?>
+<?php else: ?>
 
-            <!-- article -->
-            <article>
+<!-- article -->
+<article>
 
-                <h2><?php _e( 'Sorry, nothing to display.', 'evakos' ); ?></h2>
+    <h2><?php _e( 'Sorry, nothing to display.', 'evakos' ); ?></h2>
 
-            </article>
-            <!-- /article -->
+</article>
+<!-- /article -->
 
-            <?php endif; ?>
+<?php endif; ?>
 
-        </div>
-
-        <!-- /section -->
-
-    </div>
-
-</div>
 
 
 <?php get_footer(); ?>

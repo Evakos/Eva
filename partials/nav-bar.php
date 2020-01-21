@@ -42,26 +42,29 @@
             <?php if ( is_user_logged_in() ) {?>
 
             <div class="account-dropdown">
-                <span></span>
-                <div class="account-dropdown-content">
+
+                <ul class="account-dropdown-content">
 
 
                     <?php wc_get_template('/myaccount/account-links-mini.php'); ?>
 
-                </div>
             </div>
-
-            <?php } else {
-
-    echo '<a class="btn md-trans" id="modal-btn">
-        <i class="fas fa-cog"></i>
-        <span>Login</span>
-    </a>
-    ';
-    }?>
-
-
         </div>
+
+        <?php } else {?>
+
+        <a class="account-login" href="/my-account/">
+
+        </a>
+
+
+
+
+
+        <?php
+
+            }?>
+
 
     </div>
 

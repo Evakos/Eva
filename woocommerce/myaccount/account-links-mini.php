@@ -3,7 +3,8 @@
 <?php
     echo wp_nav_menu(array(
       'theme_location' => 'account_mini_menu',
-      'container' => false,
+      'container_class' => 'nav',
+      'container' => '',
       'items_wrap' => '%3$s',
       'depth' => 0,
       'walker' => new Easy_Walker()

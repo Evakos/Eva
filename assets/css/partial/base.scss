@@ -27,7 +27,7 @@ body {
   font-family: $eks_font--main;
   color: $b;
   margin: 0;
-  background-color: $w1;
+  background-color: $w;
   height: 100%;
   min-height: 100%;
   word-break: break-word;
@@ -83,7 +83,7 @@ a {
 
 h1 {
   display: block;
-  font-size: 350%;
+  font-size: 4rem;
   margin-top: 0.2rem;
   margin-bottom: 0.2em;
   font-weight: bold;
@@ -91,7 +91,7 @@ h1 {
 
 h2 {
   display: block;
-  font-size: 300%;
+  font-size: 3rem;
   margin-top: 0.2rem;
   margin-bottom: 0.2em;
   font-weight: bold;
@@ -99,15 +99,15 @@ h2 {
 
 h3 {
   display: block;
-  font-size: 250%;
+  font-size: 2rem;
   margin-top: 0.2rem;
   margin-bottom: 0.2em;
   font-weight: bold;
 }
 
-h3 {
+h4 {
   display: block;
-  font-size: 200%;
+  font-size: 1rem;
   margin-top: 0.2rem;
   margin-bottom: 0.2em;
   font-weight: bold;

@@ -1,6 +1,14 @@
 <?php
 
 
+//Remove Woo Styles
+add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
+
+//Remove Product Meta
+
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
+
+
 //Get Subscriptions Count from Database to Display in Dashboard
       
 function get_user_active_subscriptions_count( $product_id, $user_id = null ) {
@@ -116,13 +124,13 @@ remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_l
 
 
 /* Remove Woocommerce Styles*/
-add_filter( 'woocommerce_enqueue_styles', 'eks_dequeue_styles' );
-function eks_dequeue_styles( $enqueue_styles ) {
-	unset( $enqueue_styles['woocommerce-general'] );	// Remove the gloss
-	unset( $enqueue_styles['woocommerce-layout'] );		// Remove the layout
-	unset( $enqueue_styles['woocommerce-smallscreen'] );	// Remove the smallscreen optimisation
-	return $enqueue_styles;
-}
+// add_filter( 'woocommerce_enqueue_styles', 'eks_dequeue_styles' );
+// function eks_dequeue_styles( $enqueue_styles ) {
+// 	unset( $enqueue_styles['woocommerce-general'] );	// Remove the gloss
+// 	unset( $enqueue_styles['woocommerce-layout'] );		// Remove the layout
+// 	unset( $enqueue_styles['woocommerce-smallscreen'] );	// Remove the smallscreen optimisation
+// 	return $enqueue_styles;
+// }
 
   
 /*  Include Walker Class for Drop Downs*/

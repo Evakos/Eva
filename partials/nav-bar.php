@@ -1,14 +1,10 @@
 <?php
+
 ?>
-
-
-
 
 <div class="nav-header">
 
     <div class="nav-header-inner">
-
-
 
         <div class="nav-bar-left">
 

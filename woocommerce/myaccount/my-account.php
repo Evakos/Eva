@@ -22,111 +22,117 @@ defined( 'ABSPATH' ) || exit;
  *
  * @since 2.6.0
  */
-do_action( 'woocommerce_account_navigation' ); ?>
+?>
 
-<div class="grid-container-dashboard">
-
-    <div class="grid-item-dashboard">
-
-        <div class='account-user-info'>
-
-            <div class='account-avatar'>
-
-                <?php wc_get_template('myaccount/account-user.php'); ?>
-
-            </div>
-
-            <div class='account-meta'>
-
-                <ul style='list-style-type: none;'>
+<div class='row'>
 
 
+    <?php do_action( 'woocommerce_account_navigation' ); ?>
 
-                    <li>
-                        <?php printf(__( '%1$s  <br> <span> if you\'re not %1$s please <a href="%2$s">Log out</a> </span>' , 'woocommerce' ),
+
+    <div class="grid-container-dashboard">
+
+        <div class="grid-item-dashboard">
+
+            <div class='account-user-info'>
+
+                <div class='account-avatar'>
+
+                    <?php wc_get_template('myaccount/account-user.php'); ?>
+
+                </div>
+
+                <div class='account-meta'>
+
+                    <ul style='list-style-type: none;'>
+
+                        <li>
+                            <?php printf(__( '%1$s  <br> <span> if you\'re not %1$s please <a href="%2$s">Log out</a> </span>' , 'woocommerce' ),
 			     
 		 esc_html( $current_user->display_name ),
 		esc_url( wc_logout_url() )
 	);
 ?>
-                    </li>
+                        </li>
 
-                    <?php $user_id = $current_user->ID; ?>
-
-
-
-                    <li class='customer-number'><?php echo 'No:'.$user_id;?></li>
-
-                    <li>
+                        <?php $user_id = $current_user->ID; ?>
 
 
 
+                        <li class='customer-number'><?php echo 'No:'.$user_id;?></li>
 
-                    </li>
-
-
-
-                </ul>
+                        <li>
 
 
+
+
+                        </li>
+
+
+
+                    </ul>
+
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="grid-item-dashboard">
+
+            <div class='account-meta-box'>
+
+                <div class='account-meta-title'>
+
+                    <h4>Orders</h4>
+
+                </div>
+
+                <div class='account-count'>
+
+                    <?php $customer_orders = wc_get_customer_order_count( $userid ); ?>
+
+                    <?php echo $customer_orders;?>
+
+                </div>
 
             </div>
 
         </div>
 
 
-    </div>
-    <div class="grid-item-dashboard">
+        <div class="grid-item-dashboard">
 
-        <div class='account-meta-box'>
+            <div class='account-meta-box'>
 
-            <div class='account-meta-title'>
+                <div class='account-meta-title'>
 
-                <h4>Orders</h4>
+                    <h4>Subscriptions</h4>
+
+                </div>
+
+                <div class='account-count'>
+
+                    <?php $customer_subscriptions = get_user_active_subscriptions_count( $userid ); ?>
+
+                    <?php echo $customer_subscriptions;?>
+
+                </div>
 
             </div>
 
-            <div class='account-count'>
 
-                <?php $customer_orders = wc_get_customer_order_count( $userid ); ?>
 
-                <?php echo $customer_orders;?>
-
-            </div>
 
         </div>
-
+        <div class="grid-item-dashboard">4</div>
+        <div class="grid-item-dashboard">5</div>
+        <div class="grid-item-dashboard">6</div>
+        <div class="grid-item-dashboard">7</div>
+        <div class="grid-item-dashboard">8</div>
+        <div class="grid-item-dashboard">9</div>
     </div>
 
-
-    <div class="grid-item-dashboard">
-
-        <div class='account-meta-box'>
-
-            <div class='account-meta-title'>
-
-                <h4>Subscriptions</h4>
-
-            </div>
-
-            <div class='account-count'>
-
-                <?php $customer_subscriptions = get_user_active_subscriptions_count( $userid ); ?>
-
-                <?php echo $customer_subscriptions;?>
-
-            </div>
-
-        </div>
-
-
-
-
-    </div>
-    <div class="grid-item-dashboard">4</div>
-    <div class="grid-item-dashboard">5</div>
-    <div class="grid-item-dashboard">6</div>
-    <div class="grid-item-dashboard">7</div>
-    <div class="grid-item-dashboard">8</div>
-    <div class="grid-item-dashboard">9</div>
 </div>

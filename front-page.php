@@ -12,12 +12,13 @@
 <?php get_header(); ?>
 
 <div class='wrapper'>
+    <?php get_template_part( 'partials/nav', 'bar' ); ?>
 
     <hero>
 
         <div class='banner'>
 
-            <?php get_template_part( 'partials/nav', 'bar' ); ?>
+
 
             <div class='row'>
 
@@ -38,7 +39,6 @@
                     <div class='box'>
 
                         <?php echo do_shortcode('[eks-wc-reg]'); ?>
-
 
                     </div>
 
@@ -79,23 +79,17 @@
 
                             <h4>127 Current Clients</h4>
 
-
-
                         </div>
 
                         <div class='services-item-3'>
 
                             <h4>Another One</h4>
 
-
-
                         </div>
 
                         <div class='services-item-4'>
 
                             <h4>Dynamic Hosting & Support</h4>
-
-
 
                         </div>
 
@@ -106,7 +100,6 @@
             </div>
 
         </section>
-
 
         <section class='portfolio-section'>
 
@@ -129,25 +122,15 @@
 
                     <div class='box'>
 
-
-
-
                     </div>
 
                 </div>
 
-
-
             </div>
-
 
         </section>
 
-
-
-
         <section class='price-section'>
-
 
             <div class='row'>
 
@@ -197,8 +180,6 @@
 
                             <a href="/product/premium-hosting-support/" class="button alt">Get Quote</a>
 
-
-
                         </div>
 
                         <div class='prices-item-3'>
@@ -221,28 +202,15 @@
 
                             <a href="#" class="button alt">Get Quote</a>
 
-
-
                         </div>
-
-
-
-
 
                     </div>
 
                 </div>
 
-
-
-
-
             </div>
 
         </section>
 
-
-
     </main>
     <footer><?php get_footer(); ?></footer>
-</div>

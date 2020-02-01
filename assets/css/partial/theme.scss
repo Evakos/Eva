@@ -20,7 +20,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
   width: 100%;
   height: 100%;
   grid-template-areas: 'hero''main''footer';
-  grid-template-rows: 650px 1fr 20px;
+  grid-template-rows: 600px 1fr 20px;
   grid-template-columns: 1fr;
 }
 
@@ -40,10 +40,10 @@ Use it to make something cool, have fun, and share what you've learned with othe
   display: grid;
   width: 100%;
   height: 100%;
-  grid-template-areas: 'main''footer';
+  grid-template-areas: "main""footer";
   grid-template-rows: 1fr 20px;
   grid-template-columns: 1fr;
-  padding-top: 7rem;
+  padding-top: 8rem;
 }
 
 .wrapper-page>main {
@@ -60,10 +60,10 @@ Use it to make something cool, have fun, and share what you've learned with othe
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 1380px;
+  width: 1280px;
   margin: 0 auto;
   align-content: center;
-  padding: 3rem 0rem;
+  padding: 1rem 0rem;
 }
 
 .col {
@@ -91,11 +91,9 @@ Use it to make something cool, have fun, and share what you've learned with othe
 /* Banner */
 
 .banner {
-  background: url('img/hero.svg') no-repeat;
+  background: url("img/hero.svg") no-repeat;
   background-position: 50% bottom;
-  background-size: cover;
-  height: 600px;
-  display: flex;
+  height: 100%;
 }
 
 /* Naigation */
@@ -110,7 +108,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 }
 
 .nav-header-inner {
-  width: 1380px;
+  width: 1280px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -125,12 +123,12 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 .box {
   padding: 1rem 3rem;
-  margin-top: 10%;
+  margin-top: 25%;
 }
 
 .text-box {
-  width: 80%;
-  margin-top: 10%;
+  width: 90%;
+  margin-top: 25%;
 }
 
 .nav {
@@ -260,21 +258,21 @@ Use it to make something cool, have fun, and share what you've learned with othe
 .account-dropdown-content {
   position: absolute;
   background-color: black;
-  min-width: 280px;
+  min-width: 300px;
   z-index: 1;
   left: -15.5rem;
-  top: 0;
-  padding: 3rem 0rem 1rem;
+  top: -50px;
+  padding: 7rem 0rem 1rem 1rem;
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s, opacity 0.2s linear;
-  justify-content: center;
+  justify-content: left;
 }
 
 .account-dropdown-content a {
   color: white;
-  font-size: 0.9rem;
-  font-weight: bold;
+  //font-size: 0.9rem;
+  font-weight: normal;
 }
 
 ul.account-dropdown-content li {
@@ -283,27 +281,27 @@ ul.account-dropdown-content li {
   margin-right: 1rem;
 }
 
-ul.account-dropdown-content li:first-child:before {
-  content: '';
-  background: url('img/icons/user-wht.svg') no-repeat;
-  display: block;
-  background-position: center;
-  width: 30px;
-  height: 30px;
-  background-size: 40%;
-  background-color: transparent;
-}
+// ul.account-dropdown-content li:first-child:before {
+//   content: '';
+//   background: url('img/icons/user-wht.svg') no-repeat;
+//   display: block;
+//   background-position: center;
+//   width: 30px;
+//   height: 30px;
+//   background-size: 40%;
+//   background-color: transparent;
+// }
 
-ul.account-dropdown-content li:nth-child(2):before {
-  content: '';
-  background: url('img/icons/log-out-wht.svg') no-repeat;
-  display: block;
-  background-position: center;
-  width: 30px;
-  height: 30px;
-  background-size: 40%;
-  background-color: transparent;
-}
+// ul.account-dropdown-content li:nth-child(2):before {
+//   content: '';
+//   background: url('img/icons/log-out-wht.svg') no-repeat;
+//   display: block;
+//   background-position: center;
+//   width: 30px;
+//   height: 30px;
+//   background-size: 40%;
+//   background-color: transparent;
+// }
 
 .account-dropdown:hover .account-dropdown-content {
   display: flex;
@@ -313,7 +311,7 @@ ul.account-dropdown-content li:nth-child(2):before {
 
 a.account-login {
   content: '';
-  background: url('img/icons/log-in.svg') no-repeat;
+  background: url('img/icons/user.svg') no-repeat;
   color: white;
   display: block;
   background-position: center;
@@ -328,6 +326,75 @@ a.account-login {
 
 a.account-login:hover {
   background-color: rgba(255, 255, 255, 1);
+}
+
+
+//Style Check Boxes
+
+.chk {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: inline-block;
+}
+
+
+input[type='checkbox'] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: $s;
+}
+
+
+/* On mouse-over, add a grey background color */
+.chk:hover input~.checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.chk input:checked~.checkmark {
+  background-color: #000;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.chk input:checked~.checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.chk .checkmark::after {
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 /* Sevices Section */
@@ -364,7 +431,7 @@ a.account-login:hover {
 //Prices Section
 
 .price-section {
-  background-color: $s;
+  background-color: $w;
 }
 
 .prices-grid-container {
@@ -396,6 +463,7 @@ ul.price-list {
 
 .price-list li {
   margin: 1rem;
+  font-weight: bold;
 }
 
 .price-img-design {
@@ -453,8 +521,6 @@ ul.price-list {
   background: url('img/icons/design.svg') no-repeat;
 }
 
-
-
 /* Logo */
 
 img.custom-logo {
@@ -465,15 +531,27 @@ img.custom-logo {
 /*Buttons*/
 
 .button {
-  display: inline-block;
-  background-color: $s;
+  background-color: #e7fcfb;
   color: black;
-  padding: 1rem 3rem;
-  //box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  padding: 1rem 2rem;
   transition: 0.3s;
   border: 0;
   font-weight: bold;
+  width: 200px;
+  display: inline-block;
 }
+
+.button.alt {
+  background-color: #4D7D7B;
+  color: white;
+}
+
+.button.alt-white {
+  background-color: #fff;
+  color: black;
+  width: 100%;
+}
+
 
 .button:hover {
   background-color: #e0ebed;
@@ -481,14 +559,14 @@ img.custom-logo {
   cursor: pointer;
 }
 
-.alt {
-  background-color: $w;
-  color: $b;
-}
+// .alt {
+//   background-color: $w;
+//   color: $b;
+// }
 
 .alt:hover {
-  background-color: $s;
-  color: $b;
+  background-color: #5f9997;
+  color: $w;
 }
 
 

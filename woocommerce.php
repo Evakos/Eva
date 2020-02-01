@@ -4,8 +4,6 @@
 
 <div class='wrapper-page'>
 
-
-
     <!-- section DEFAULT WOOCOMMERCE.PHP-->
     <main>
         <?php woocommerce_content(); ?>

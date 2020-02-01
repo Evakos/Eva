@@ -1,10 +1,13 @@
 //General Woo Styles
 
-// .woocommerce {
-//   width: 1380px;
-//   margin: 0 auto;
-//   padding-top: 6rem;
-// }
+th,
+td {
+  padding: 1em;
+  text-align: left;
+  border-bottom: 1px solid #ececec;
+  line-height: 1.3;
+  font-size: 0.9em;
+}
 
 //Product Page
 
@@ -15,64 +18,69 @@ h1.product_title {
 }
 
 .woocommerce-variation-add-to-cart {
-  display: flex
+  display: flex;
 }
 
 .woocommerce-Price-amount {
-  font-weight: bold
+  font-weight: bold;
 }
 
 .woovr-variations .woovr-variation {
   display: flex;
   align-items: center;
   cursor: pointer;
-  padding: .5em 0em;
+  padding: 0.5em 0em;
 }
 
-.opc_order_review td.product-total {
+.cart-item .opc_order_review td.product-total {
   vertical-align: middle;
   padding-top: 0.6em;
 }
 
-
-
 //Checkout
 
-label.screen-reader-text {
-  display: none
+.woocommerce-billing-fields__field-wrapper {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.quantity input[type="number"] {
-  max-width: 3rem;
-  width: 3rem;
-
+label.screen-reader-text {
+  display: none;
 }
 
 .wc_payment_methods {
-  padding: 0
+  padding: 0;
 }
 
 #wc-stripe-cc-form {
   border: none;
+  margin: 0;
 }
 
-
 .coupon {
-  background-color: #fafafa;
-  padding: 1rem;
+  /* background-color: #fafafa; */
+  /* padding: 1rem; */
   margin-bottom: 1rem;
-  display: flex;
+  display: none;
   align-items: center;
+  margin-top: 1rem;
+}
+
+.coupon-reveal {
+  display: block;
+  cursor: pointer;
+  padding: 1rem;
+  margin-top: .3rem;
+  font-size: 0.9em;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.display {
+  display: flex;
 }
 
 .coupon label {
   display: none;
-}
-
-input#coupon_code.input-text {
-  padding: 1.7rem 1.5rem;
-  border: 0;
-  margin-right: 1rem;
 }
 
 .coupon p {
@@ -82,9 +90,25 @@ input#coupon_code.input-text {
 }
 
 .woocommerce-privacy-policy-text {
-  font-size: 0.7rem
+  font-size: 0.7rem;
 }
 
+.opc_order_review {
+  background-color: $w1;
+  padding: 1rem;
+}
+
+.eks-payment-block {
+  background-color: $s;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+#wc-stripe-cc-form {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
 
 //Dashboard
 
@@ -92,12 +116,12 @@ input#coupon_code.input-text {
   border-radius: 99px;
 }
 
-
 .grid-container-dashboard {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto 1fr 1fr;
   grid-gap: 10px;
   padding: 10px;
+  grid-template-rows: max-content;
 }
 
 .grid-container-dashboard>div {
@@ -117,7 +141,6 @@ input#coupon_code.input-text {
 
 .account-navigation ul>li+li {
   border-top: 1px solid rgba(255, 255, 255, 1);
-
 }
 
 .account-navigation ul {
@@ -131,10 +154,10 @@ input#coupon_code.input-text {
   padding: 2rem 0;
   align-items: center;
   color: black;
-  -webkit-transition: ease .6s;
-  -moz-transition: ease .6s;
-  -o-transition: ease .6s;
-  transition: ease .6s;
+  -webkit-transition: ease 0.6s;
+  -moz-transition: ease 0.6s;
+  -o-transition: ease 0.6s;
+  transition: ease 0.6s;
   background-color: #fafafa;
   font-weight: bold;
   font-size: 0.9rem;
@@ -150,155 +173,152 @@ input#coupon_code.input-text {
   align-items: center;
 }
 
-
 .account-navigation .nav>li>a {
   padding: 1.8em 0;
   text-transform: capitalize;
 }
 
-
 .woocommerce-MyAccount-navigation-link--dashboard a:before {
-  content: "";
-  background: url("img/icons/user.svg") no-repeat;
+  content: '';
+  background: url('img/icons/user.svg') no-repeat;
   color: white;
   display: block;
   background-position: center;
   width: 30px;
   height: 30px;
   background-size: 40%;
-  background-color: rgba(255, 255, 255, .7);
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 99px;
-  margin-right: .5em;
-  margin-left: .7em;
+  margin-right: 0.5em;
+  margin-left: 0.7em;
 }
 
 .woocommerce-MyAccount-navigation-link--orders a:before {
-  content: "";
-  background: url("img/icons/package.svg") no-repeat;
+  content: '';
+  background: url('img/icons/package.svg') no-repeat;
   color: white;
   display: block;
   background-position: center;
   width: 30px;
   height: 30px;
   background-size: 40%;
-  background-color: rgba(255, 255, 255, .7);
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 99px;
-  margin-right: .5em;
-  margin-left: .7em;
+  margin-right: 0.5em;
+  margin-left: 0.7em;
 }
 
 .woocommerce-MyAccount-navigation-link--subscriptions a:before {
-  content: "";
-  background: url("img/icons/refresh-cw.svg") no-repeat;
+  content: '';
+  background: url('img/icons/refresh-cw.svg') no-repeat;
   color: white;
   display: block;
   background-position: center;
   width: 30px;
   height: 30px;
   background-size: 40%;
-  background-color: rgba(255, 255, 255, .7);
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 99px;
-  margin-right: .5em;
-  margin-left: .7em;
+  margin-right: 0.5em;
+  margin-left: 0.7em;
 }
 
 .woocommerce-MyAccount-navigation-link--support-conversations a:before {
-  content: "";
-  background: url("img/icons/message-square.svg") no-repeat;
+  content: '';
+  background: url('img/icons/message-square.svg') no-repeat;
   color: white;
   display: block;
   background-position: center;
   width: 30px;
   height: 30px;
   background-size: 40%;
-  background-color: rgba(255, 255, 255, .7);
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 99px;
-  margin-right: .5em;
-  margin-left: .7em;
+  margin-right: 0.5em;
+  margin-left: 0.7em;
 }
 
 .woocommerce-MyAccount-navigation-link--downloads a:before {
-  content: "";
-  background: url("img/icons/download.svg") no-repeat;
+  content: '';
+  background: url('img/icons/download.svg') no-repeat;
   color: white;
   display: block;
   background-position: center;
   width: 30px;
   height: 30px;
   background-size: 40%;
-  background-color: rgba(255, 255, 255, .7);
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 99px;
-  margin-right: .5em;
-  margin-left: .7em;
+  margin-right: 0.5em;
+  margin-left: 0.7em;
 }
 
 .woocommerce-MyAccount-navigation-link--edit-address a:before {
-  content: "";
-  background: url("img/icons//home.svg") no-repeat;
+  content: '';
+  background: url('img/icons/home.svg') no-repeat;
   color: white;
   display: block;
   background-position: center;
   width: 30px;
   height: 30px;
   background-size: 40%;
-  background-color: rgba(255, 255, 255, .7);
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 99px;
-  margin-right: .5em;
-  margin-left: .7em;
+  margin-right: 0.5em;
+  margin-left: 0.7em;
 }
 
-
 .woocommerce-MyAccount-navigation-link--payment-methods a:before {
-  content: "";
-  background: url("img/icons/credit-card.svg") no-repeat;
+  content: '';
+  background: url('img/icons/credit-card.svg') no-repeat;
   color: white;
   display: block;
   background-position: center;
   width: 30px;
   height: 30px;
   background-size: 40%;
-  background-color: rgba(255, 255, 255, .7);
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 99px;
-  margin-right: .5em;
-  margin-left: .7em;
+  margin-right: 0.5em;
+  margin-left: 0.7em;
 }
 
 .woocommerce-MyAccount-navigation-link--edit-account a:before {
-  content: "";
-  background: url("img/icons/edit.svg") no-repeat;
+  content: '';
+  background: url('img/icons/edit.svg') no-repeat;
   color: white;
   display: block;
   background-position: center;
   width: 30px;
   height: 30px;
   background-size: 40%;
-  background-color: rgba(255, 255, 255, .7);
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 99px;
-  margin-right: .5em;
-  margin-left: .7em;
+  margin-right: 0.5em;
+  margin-left: 0.7em;
 }
 
 .woocommerce-MyAccount-navigation-link--customer-logout a:before {
-  content: "";
-  background: url("img/icons/log-out.svg") no-repeat;
+  content: '';
+  background: url('img/icons/log-out.svg') no-repeat;
   color: white;
   display: block;
   background-position: center;
   width: 30px;
   height: 30px;
   background-size: 40%;
-  background-color: rgba(255, 255, 255, .7);
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 99px;
-  margin-right: .5em;
-  margin-left: .7em;
+  margin-right: 0.5em;
+  margin-left: 0.7em;
 }
 
 .account-user-info {
-  display: flex
+  display: flex;
 }
 
 .nav-line>li>a::before {
-  background-color: white
+  background-color: white;
 }
 
 .account-user {
@@ -314,7 +334,6 @@ input#coupon_code.input-text {
   padding: 1em;
 }
 
-
 .account-meta-box {
   display: flex;
   flex-direction: column;
@@ -323,28 +342,710 @@ input#coupon_code.input-text {
 
 .account-meta {
   border-left: 1px solid white;
-  padding-left: 1em
+  padding-left: 1em;
 }
 
 .account-meta-title h4 {
-  border-bottom: 1px solid rgba(0, 0, 0, .05);
-
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .account-user-orders-count {
   text-align: center;
-  font-size: 300%
+  font-size: 300%;
 }
 
 .account-account-meta ul li span {
-  font-size: 80%
+  font-size: 80%;
 }
 
 .account-count {
   font-weight: bold;
-  font-size: 200%
+  font-size: 200%;
 }
 
 .customer-number {
-  font-weight: normal
+  font-weight: normal;
 }
+
+.account-meta ul li {
+  font-weight: bold;
+}
+
+.account-meta ul li span {
+  font-weight: normal;
+  font-size: 0.8rem;
+}
+
+//Checkout
+
+.order-total.recurring-total th,
+.order-total.recurring-total td {
+  border-bottom: 0
+}
+
+.opc_order_review .woocommerce-billing-fields__field-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form-row-first,
+.form-row-last {
+  width: 49%;
+}
+
+.form-row-first {
+  margin-right: 0.6rem;
+}
+
+.form-row-wide {
+  width: 100%;
+}
+
+.form-row {
+  margin-bottom: 0.1rem;
+}
+
+.optional {
+  font-size: 0.6rem;
+}
+
+.quantity input[type='number'] {
+  max-width: 3.5rem;
+  width: 3.5rem;
+}
+
+.quantity {
+  margin-left: 3em;
+}
+
+#order_review td.product-name {
+  width: 370px;
+  display: flex;
+  align-items: center;
+}
+
+#order_review .product-remove {
+  margin-left: -1.2em;
+  float: left;
+  margin-right: 0.5em;
+}
+
+#place_order.button.alt {
+  width: 100%;
+}
+
+input#coupon_code.input-text {
+  /* padding: 1.7rem 1.5rem; */
+  /* border: 0; */
+  margin-right: 1rem;
+}
+
+ul.woocommerce-SavedPaymentMethods.wc-saved-payment-methods {
+  margin-left: 0;
+}
+
+#stripe-payment-data p:first-of-type {
+  display: none;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 100%;
+  position: absolute;
+  top: 1px;
+  right: 10px;
+  width: 20px;
+}
+
+.product-name {
+  display: flex;
+  justify-content: space-between;
+}
+
+//Stripe Styles
+
+label[for='card-element'] {
+  margin-bottom: 1rem;
+}
+
+label[for='payment_method_stripe'] {
+  display: none !important;
+}
+
+.wc-stripe-elements-field,
+.wc-stripe-iban-element-field {
+  border: 1px solid #ddd;
+  margin: 5px 0;
+  padding: 15px;
+  background-color: #fff;
+  outline: 0;
+}
+
+.woocommerce-form-coupon {
+  display: none;
+}
+
+//Product Page
+
+.woocommerce-variation-price {
+  font-size: 1.2em;
+}
+
+.single_variation_wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
+  border-top: 1px dotted lightgrey;
+  margin-top: 2em;
+}
+
+// .container .message-container {
+//   padding-left: 0;
+//   padding-right: 0;
+//   padding: .5em;
+//   color: white;
+// }
+
+// .success-color {
+//   background-color: #7eab5d
+// }
+
+// .join-us .col-inner {
+//   display: flex;
+//   align-items: center
+// }
+
+// .woovr-variation-selector input {
+//   margin: 0
+// }
+
+// .woovr-variations .woovr-variation {
+//   display: flex;
+//   align-items: center;
+//   cursor: pointer;
+//   padding: .5em 1em;
+// }
+
+//
+
+// .single_variation_wrap {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   padding: 1em;
+//   border-top: 1px dotted lightgrey;
+//   margin-top: 2em;
+// }
+
+// .woocommerce-variation-price {
+//   border-top: 0;
+
+// }
+
+// /*************** SHIT  ***************/
+
+// #eks-count {
+//   border-radius: 50%;
+//   text-align: center;
+//   font-size: 22px;
+//   background-color: #769994;
+//   color: white;
+//   font-weight: 600;
+//   /* padding: .5em 1em; */
+//   margin-right: .5em;
+//   width: 6rem;
+//   height: 5rem;
+//   display: inline-flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+// .eks-btn {
+
+//   padding: .4em;
+
+// }
+
+// .eks-fw {
+//   max-width: 100%
+// }
+
+// .my-account {
+//   padding: 0
+// }
+
+// .fas {
+//   color: #5C34E0
+// }
+
+// ul.eks-list {
+//   list-style-type: none;
+// }
+
+// ul.eks-list li {
+//   margin: 0 0 15px 0
+// }
+
+// #wrapper>.message-wrapper {
+//   padding-top: .75em;
+//   padding-bottom: .75em;
+//   margin-bottom: 0;
+//   font-size: 1.1em;
+//   position: absolute;
+//   width: 100%;
+//   z-index: 999;
+//   background-color: skyblue;
+// }
+
+// ul.woocommerce-error.message-wrapper li {
+//   margin: 0
+// }
+
+// .alert-color {
+//   color: white;
+// }
+
+// .auth-msg {
+//   display: inline-flex;
+//   align-items: center;
+// }
+
+// .sticky-add-to-cart {
+//   display: flex;
+//   align-content: center;
+//   align-items: center;
+// }
+
+// .single_add_to_cart_button {
+//   margin: 0
+// }
+
+// input[type="number"] {
+
+//   height: auto;
+
+// }
+
+// .subscription-details {
+//   font-size: 70%
+// }
+
+// .woocommerce-variation-price {
+//   font-size: 1.4em;
+// }
+
+// .woovr-variations .woovr-variation:hover {
+//   background-color: rgba(135, 206, 250, .08);
+// }
+
+// .fl-labels .form-row input:not([type="checkbox"]),
+// .fl-labels .form-row textarea,
+// .fl-labels .form-row select {
+//   height: 3.8em;
+//   transition: padding .3s;
+// }
+
+// .cart-header {
+//   display: flex;
+//   align-items: center
+// }
+
+// .checkout-breadcrumbs {
+//   padding: 0 0 0 10px;
+//   text-transform: capitalize;
+// }
+
+// .woocommerce-billing-fields {
+//   padding-top: 15px;
+//   border-top: 0;
+// }
+
+// /*.banner .bg-fill {
+//   background-size: 70% !important;
+//   background-repeat: no-repeat !important;
+// }*/
+// .single_add_to_cart_button {
+//   min-height: 2.9em;
+// }
+
+// .auth-msg i.fas {
+//   color: salmon;
+//   font-size: 120%;
+//   margin-right: 5px;
+// }
+
+// #order_review .opc_cart_item td.product-name {
+//   padding-left: 1em;
+//   min-width: 80%;
+//   vertical-align: middle;
+// }
+
+// .recurring-totals {
+//   display: none
+// }
+
+// .recurring-totals,
+// .cart-subtotal recurring-total {
+//   display: none
+// }
+
+// .payment_methods li+li {
+//   padding-top: 0px;
+//   border-top: 0px solid #ececec;
+// }
+
+// ul.woocommerce-SavedPaymentMethods {
+//   display: flex
+// }
+
+// .checkout li.woocommerce-SavedPaymentMethods-token {
+//   margin-right: 1rem
+// }
+
+// #place_order.button.alt {
+//   width: 100%;
+//   line-height: 3;
+// }
+
+//
+
+// input[type="checkbox"],
+// input[type="radio"] {
+//   display: inline;
+//   margin-right: 1px;
+//   font-size: 16px;
+// }
+
+// ul.woocommerce_error {
+//   margin-left: 0;
+//   font-size: 80%;
+// }
+
+// .is-well {
+//   padding: 20px 30px;
+
+// }
+
+// .coupon {
+//   display: flex
+// }
+
+// .coupon p {
+//   flex-basis: 40%;
+//   font-size: 60%;
+// }
+
+// .coupon>button {
+//   font-size: 60%;
+//   flex-basis: 30%;
+//   background-color: lightgrey;
+// }
+
+// .coupon>.button,
+// button,
+// input,
+// textarea,
+// select,
+// fieldset {
+//   margin-bottom: 0;
+//   margin-right: 0;
+// }
+
+// .eks-col .services {
+//   padding: 40px;
+//   background: #fff;
+//   box-shadow: 0 10px 40px 0 rgba(47, 47, 47, .1);
+//   box-sizing: border-box;
+//   position: relative;
+//   transition: all .2s linear;
+// }
+
+// .float-container {
+//   box-sizing: border-box;
+//   padding: 0 1em;
+//   position: relative;
+//   width: 395px;
+//   background-color: rgba(255, 255, 255, .2);
+
+// }
+
+// .banner .bg-fill {
+//   background-size: 100% !important
+// }
+
+// .eks-btn span {
+//   color: #1e1e1e
+// }
+
+// .eks-btn {
+//   padding: .4em 2em;
+
+// }
+
+// .account-link::before {
+//   content: "";
+//   background: url("https://evakos.io/wp-content/uploads/2020/01/user-wht.svg") no-repeat;
+//   color: white;
+//   display: block;
+//   background-position: center;
+//   width: 30px;
+//   height: 30px;
+//   background-size: 50%;
+//   background-color: rgba(255, 255, 255, 0.2);
+//   border-radius: 99px;
+//   transition: 0.3s;
+// }
+
+// .account-link:hover:before {
+
+//   background-color: rgba(231, 252, 251, 1);
+
+// }
+
+// .float-container {
+//   box-sizing: border-box;
+//   padding: 0 1em;
+//   position: relative;
+//   width: 395px;
+//   background-color: rgba(0, 0, 0, .03);
+// }
+
+// .price-col {
+//   background-color: #e7fcfb;
+//   padding: 50px 20px 0px 20px;
+//   /* border: 1px solid rgba(34, 33, 38, 0.2); */
+//   transition-duration: 5s;
+//   margin-right: 1em;
+// }
+
+// .has-icon-bg .icon .icon-inner {
+//   color: #000;
+//   background-color: #fff;
+//   border: 0;
+// }
+
+// .float-container {
+//   box-sizing: border-box;
+//   padding: 0 1em;
+//   position: relative;
+//   width: 395px;
+//   background-color: rgba(0, 0, 0, .02);
+// }
+
+// .account-link::before {
+//   content: "";
+//   background: url("https://evakos.io/wp-content/uploads/2020/01/user.svg") no-repeat;
+//   color: white;
+//   display: block;
+//   background-position: center;
+//   width: 40px;
+//   height: 40px;
+//   background-size: 30%;
+//   background-color: rgba(255, 255, 255, .5);
+//   border-radius: 99px;
+// }
+
+// .eks-dashboard::before {
+//   content: "";
+//   background: url("https://evakos.io/wp-content/uploads/2020/01/user-wht.svg") no-repeat;
+//   color: white;
+//   display: inline-block;
+//   background-position: center;
+//   width: 40px;
+//   height: 40px;
+//   background-size: 40%;
+// }
+
+// .eks-dashboard::before {
+//   content: "";
+//   background: url("https://evakos.io/wp-content/uploads/2020/01/user-wht.svg") no-repeat;
+//   color: white;
+//   display: inline-block;
+//   background-position: center;
+//   width: 30px;
+//   height: 30px;
+//   background-size: 45%;
+// }
+
+// .eks-logout::before {
+//   content: "";
+//   background: url("https://evakos.io/wp-content/uploads/2020/01/log-out.svg") no-repeat;
+//   color: white;
+//   display: inline-block;
+//   background-position: center;
+//   width: 30px;
+//   height: 30px;
+//   background-size: 45%;
+// }
+
+// .icon-box-img svg {
+//   width: 100%;
+//   height: 35%;
+//   transition: all .3s;
+//   fill: currentColor;
+// }
+
+// ul.log-func {
+//   display: inline-flex;
+// }
+
+// ul.log-func li {
+//   align-items: center;
+//   display: inline-flex
+// }
+
+// .eks-nav-dropdown {
+//   position: absolute;
+//   min-width: 260px;
+//   max-height: 0;
+//   z-index: 9;
+//   padding: 20px 0 20px;
+//   opacity: 0;
+//   margin: 0;
+//   transition: opacity .25s;
+//   box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.15);
+//   border: 2px solid #ddd;
+//   color: #777;
+//   background-color: #fff;
+//   text-align: left;
+//   display: table;
+//   left: -99999px;
+// }
+
+// .account-link::before {
+//   content: "";
+//   background: url("https://evakos.io/wp-content/uploads/2020/01/user.svg") no-repeat;
+//   color: white;
+//   display: block;
+//   background-position: center;
+//   width: 30px;
+//   height: 30px;
+//   background-size: 40%;
+//   background-color: rgba(255, 255, 255, .7);
+//   border-radius: 99px;
+// }
+
+// .nav-dropdown {
+//   position: absolute;
+//   min-width: 260px;
+//   max-height: 0;
+//   z-index: 9;
+//   padding: 20px 0 20px;
+//   opacity: 0;
+//   margin: 0;
+//   transition: opacity .25s;
+//   box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.15);
+//   border: 2px solid #ddd;
+//   color: #777;
+//   background-color: #fff;
+//   text-align: center;
+//   display: flex;
+//   left: -99999px;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+// ul.log-func li.eks-dashboardb {
+//   margin-right: 0.8em
+// }
+
+// /*.eks-meta-title {
+//   display: flex;
+//   align-content: center;
+//   justify-content: center;
+
+// }*/
+
+// .eks-meta-title h4 {
+
+//   border-bottom: 1px solid rgba(0, 0, 0, .05);
+
+// }
+
+// /*.eks-account-title p::before {
+//   content: "";
+//   background: url("https://evakos.io/wp-content/uploads/2020/01/package.svg") no-repeat;
+//   color: white;
+//   display: block;
+//   background-position: center;
+//   width: 50px;
+//   height: 50px;
+//   background-size: 40%;
+//   background-color: transparent;
+//   border-radius: 99px;
+//   margin-right: .5em;
+// }*/
+
+// .eks-user-orders-count {
+//   text-align: center;
+//   font-size: 300%
+// }
+
+// .eks-account-meta ul li span {
+//   font-size: 80%
+// }
+
+// .grid-container>div {
+//   background-color: rgba(0, 0, 0, 0.03);
+//   padding: 1em;
+//   transition: 0.4s;
+
+// }
+
+// .woocommerce-MyAccount-navigation-link:hover {
+//   background-color: rgba(0, 0, 0, .03)
+// }
+
+// .eks-accont-col {
+//   background-color: rgba(0, 0, 0, 0.03);
+//   padding: 0;
+// }
+
+// .eks-accont-col li {
+//   margin-left: 1em
+// }
+
+// .eks-account-meta ul li span {
+//   font-size: 80%;
+//   font-weight: normal;
+// }
+
+// .eks-account-meta ul:first-child {
+//   font-weight: bold;
+// }
+
+// .grid-container>div:hover {
+//   background-color: rgba(0, 0, 0, 0.05);
+//   cursor: pointer;
+// }
+
+// .grid-container>div:first-child:hover {
+//   background-color: rgba(0, 0, 0, 0.03);
+//   cursor: default;
+// }
+
+// .grid-container {
+//   display: grid;
+//   grid-template-columns: auto auto auto;
+//   grid-gap: 10px;
+//   padding: 0 10px;
+// }
+
+// .empty-icon::before {
+//   content: "";
+//   background: url("https://evakos.io/wp-content/uploads/2020/01/frown.svg") no-repeat;
+//   color: white;
+//   display: inline-block;
+//   background-position: center;
+//   width: 30px;
+//   height: 30px;
+//   background-size: 45%;
+// }
+
+// .no-product {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   width: 100%;
+// }

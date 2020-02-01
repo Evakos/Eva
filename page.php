@@ -8,33 +8,35 @@
 
     <main>
 
-        <?php if (have_posts()): while (have_posts()) : the_post(); ?>
+        <div class='row'>
 
-        <!-- article -->
-        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+            <?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
-            <?php the_content(); ?>
+            <!-- article -->
+            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-        </article>
-        <!-- /article -->
+                <?php the_content(); ?>
 
-        <?php endwhile; ?>
+            </article>
+            <!-- /article -->
 
-        <?php else: ?>
+            <?php endwhile; ?>
 
-        <!-- article -->
-        <article>
+            <?php else: ?>
 
-            <h2><?php _e( 'Sorry, nothing to display.', 'evakos' ); ?></h2>
+            <!-- article -->
+            <article>
 
-        </article>
-        <!-- /article -->
+                <h2><?php _e( 'Sorry, nothing to display.', 'evakos' ); ?></h2>
 
-        <?php endif; ?>
+            </article>
+            <!-- /article -->
+
+            <?php endif; ?>
+
+        </div>
 
     </main>
-
-
 
     <footer>
         <?php get_footer(); ?>

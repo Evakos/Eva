@@ -11,14 +11,13 @@
 
 <?php get_header(); ?>
 
+<?php get_template_part( 'partials/nav', 'bar' ); ?>
+
 <div class='wrapper'>
-    <?php get_template_part( 'partials/nav', 'bar' ); ?>
 
     <hero>
 
         <div class='banner'>
-
-
 
             <div class='row'>
 
@@ -27,8 +26,10 @@
                     <div class='text-box'>
 
                         <h1>Built for Success</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                            tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+                        <p>Experienced Site Creation & Support Professionals</p>
+
+                        <p>We are a innovative, dynamic design and business web support service.
+                            Keeping your site healthy and you happy. </p>
 
                     </div>
 

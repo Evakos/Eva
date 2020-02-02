@@ -12,7 +12,7 @@ td {
 //Product Page
 
 h1.product_title {
-  font-size: 2.7rem;
+  font-size: 2.6rem;
   border-bottom: 1px solid #444;
   line-height: 2;
 }
@@ -67,16 +67,40 @@ label.screen-reader-text {
 }
 
 .coupon-reveal {
-  display: block;
+  display: flex;
   cursor: pointer;
-  padding: 1rem;
+  padding: .1rem;
   margin-top: .3rem;
   font-size: 0.9em;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  align-items: center;
+  font-weight: bold;
+}
+
+.coupon-reveal:before {
+  content: '';
+  background: url('img/icons/tag.svg') no-repeat;
+  color: white;
+  display: block;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+  background-size: 40%;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 99px;
+  margin-right: 0.5rem;
+
 }
 
 .display {
   display: flex;
+}
+
+#div1 {
+  height: 100px;
+  width: 600px;
+  background: #eee;
+  text-align: center;
+  transition: width 1s linear;
 }
 
 .coupon label {
@@ -98,9 +122,9 @@ label.screen-reader-text {
   padding: 1rem;
 }
 
-.eks-payment-block {
-  background-color: $s;
-  padding: 1rem;
+.eks-coupon-block {
+  background-color: $w1;
+  padding: .5rem 1rem;
   margin-top: 1rem;
 }
 
@@ -108,6 +132,12 @@ label.screen-reader-text {
   border: none;
   margin: 0;
   padding: 0;
+}
+
+.woocommerce-checkout-payment {
+  background-color: #e7fcfb;
+  padding: 2rem 1rem;
+  margin-top: 1rem;
 }
 
 //Dashboard
@@ -409,9 +439,9 @@ label.screen-reader-text {
   font-size: 0.6rem;
 }
 
-.quantity input[type='number'] {
-  max-width: 3.5rem;
-  width: 3.5rem;
+.quantity input[type="number"] {
+  max-width: 3.2rem;
+  width: 3.2rem;
 }
 
 .quantity {
@@ -463,12 +493,29 @@ ul.woocommerce-SavedPaymentMethods.wc-saved-payment-methods {
 
 //Stripe Styles
 
-label[for='card-element'] {
+.pay-icons {
+  display: flex;
+  align-items: center;
+}
+
+.pay-icons label {
+  margin-right: 1rem;
+}
+
+label[for="card-element"] {
   margin-bottom: 1rem;
+  display: none;
 }
 
 label[for='payment_method_stripe'] {
   display: none !important;
+}
+
+#wc-stripe-cc-form {
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
 }
 
 .wc-stripe-elements-field,
@@ -478,6 +525,7 @@ label[for='payment_method_stripe'] {
   padding: 15px;
   background-color: #fff;
   outline: 0;
+  width: 100%;
 }
 
 .woocommerce-form-coupon {

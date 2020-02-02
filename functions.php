@@ -39,9 +39,9 @@ add_action( 'woocommerce_review_order_before_payment', 'eks_coupon_form_below_pr
 function eks_coupon_form_below_proceed_checkout() {
    ?>
 
-<div class='eks-payment-block'>
+<div class='eks-coupon-block'>
     <form class="woocommerce-coupon-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
-        <div class='coupon-reveal'>If you have a discount code please click here.</div>
+        <div class='coupon-reveal'>If you have a discount code click here.</div>
         <?php if ( wc_coupons_enabled() ) { ?>
         <div class="coupon">
             <input type="text" name="coupon_code" class="input-text" id="coupon_code" value=""
@@ -51,7 +51,8 @@ function eks_coupon_form_below_proceed_checkout() {
         </div>
         <?php } ?>
     </form>
-    <?php
+</div>
+<?php
 }
 
 /* Redirect to Checkout on purchase product */

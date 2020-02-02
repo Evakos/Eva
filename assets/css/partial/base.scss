@@ -63,14 +63,14 @@ textarea {
   text-transform: capitalize;
 }
 
-input[type='email'],
-input[type='date'],
-input[type='search'],
-input[type='number'],
-input[type='text'],
-input[type='tel'],
-input[type='url'],
-input[type='password'],
+input[type="email"],
+input[type="date"],
+input[type="search"],
+input[type="number"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
 textarea,
 select,
 .select-resize-ghost,
@@ -79,7 +79,7 @@ select,
   box-sizing: border-box;
   border: 1px solid #ddd;
   padding: 0 0.75em;
-  height: 4em;
+  height: 3.7em;
   font-size: 0.87em;
   border-radius: 0;
   max-width: 100%;
@@ -109,8 +109,9 @@ a {
 }
 
 label {
-  font-size: 0.9em;
+  font-size: 0.9rem;
   font-weight: bold;
+  text-transform: capitalize;
 }
 
 h1 {
@@ -146,5 +147,5 @@ h4 {
 }
 
 p {
-  line-height: 2;
+  line-height: 1.8;
 }
